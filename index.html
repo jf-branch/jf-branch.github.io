@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Expert &mdash; Onepage Template by Colorlib</title>
+    <title>Demo &mdash; Web SDK</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <script>
+      // load Branch
+      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+      // init Branch
+      branch.init('key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7', function(err, data){
+// var linkData = {
+//     campaign: 'content 123',
+//     channel: 'website',
+//     feature: 'dashboard',
+//     stage: 'new user',
+//     tags: [ 'tag1', 'tag2', 'tag3' ],
+//     alias: '',
+//     data: {
+//       'custom_bool': true,
+//       'custom_int': Date.now(),
+//       'custom_string': 'hello',
+//       '$og_title': 'Title',
+//       '$og_description': 'Description',
+//       '$og_image_url':'http://lorempixel.com/400/400'
+//     }
+//   };
+  
+//   branch.link(linkData, function(err, link) {
+//     // bind elements
+//     document.getElementById('button').onclick = function() {
+//       console.log(link)
+//       console.log(error)
+//       window.open(link || err);
+//     };
+//     document.getElementById('anchor').href = link || err;
+  // });
+      });
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Muli:300,400,700,900" rel="stylesheet">
 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -57,18 +89,16 @@
           <div>
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-xl-block">
-                <li><a href="#home-section" class="nav-link">Homepage/a></li>
-                <li><a href="#page-1" class="nav-link">Page 1</a></li>
-                <li><a href="#process-section" class="nav-link">Page 2</a></li>
-                <li><a href="#testimonials-section" class="nav-link">Page 3</a></li>
+                <li><a href="#home-section" class="nav-link">Home</a></li>
+                <li><a href="#section1" class="nav-link">Section 1</a></li>
+                <li><a href="#section2" class="nav-link">Section 2</a></li>
+                <li><a href="#section3" class="nav-link">Section 3</a></li>
               </ul>
             </nav>
           </div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-xl-block">
-                <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                <li class="cta"><a href="#contact-section" class="nav-link"><span class="border bg-danger rounded text-white border-danger">Contact</span></a></li>
               </ul>
             </nav>
             <a href="#" class="d-inline-block d-xl-none site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
@@ -80,29 +110,15 @@
 
     <div class="intro-section custom-owl-carousel" id="home-section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center"> 
           <div class="col-lg-5 mr-auto" data-aos="fade-up">
 
             <div class="owl-carousel slide-one-item-alt-text">
               <div class="slide-text">
                 <h1>We Do Awesome Things</h1>
                 <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
-                <p><a href="#" target="_blank" class="btn btn-outline-light py-3 px-5">Get Started</a></p>
-              </div>
-              <div class="slide-text">
-                <h1>Welcome</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
-                <p><a href="#" target="_blank" class="btn btn-outline-light py-3 px-5">Get Started</a></p>
-              </div>
-              <div class="slide-text">
-                <h1>High Quality Website Templates</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
-                <p><a href="#" target="_blank" class="btn btn-outline-light py-3 px-5">Get Started</a></p>
-              </div>
-              <div class="slide-text">
-                <h1>We do things right.</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
-                <p><a href="#" target="_blank" class="btn btn-outline-light py-3 px-5">Get Started</a></p>
+                <button id="button">deep link</button>
+                <a id="anchor" href="#">deep link</a>
               </div>
             </div>
 
@@ -110,20 +126,54 @@
           <div class="col-lg-6 ml-auto"  data-aos="fade-up" data-aos-delay="100">
                         
             <div class="owl-carousel slide-one-item-alt">
-              <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-              <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-              <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-              <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+              <img src="images/branch_icon.png" alt="Image" class="img-fluid">
             </div>
-
-            <div class="owl-custom-direction">
-              <a href="#" class="custom-prev"><span class="icon-keyboard_arrow_left"></span></a>
-              <a href="#" class="custom-next"><span class="icon-keyboard_arrow_right"></span></a>
-            </div>
-
           </div>
         </div>
       </div>
+    </div>
+    <div class="site-section section-2" id="section1" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <h2 class="section-title">Mobile Growth</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem possimus distinctio ex. Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="owl-carousel nonloop-block-13">
+            <img src="images/mobile_growth.png" alt="Image" class="img-fluid">
+      </div>
+    
+
+    </div>
+
+    <div class="site-section section-1" id="section2">
+      
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mr-auto mb-5"  data-aos="fade-up">
+
+            <div class="mb-5">
+              <h2 class="section-title">DEMO WEB SDK</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem possimus distinctio ex. Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
+              <p class="mb-5">Aperiam neque id, illum laudantium autem vero quae debitis tempora modi. Ipsa molestias enim in rem et incidunt beatae fugit, ab quam optio atque maiores facere est quidem, veritatis commodi.</p>
+
+              <ul class="ul-check list-unstyled success">
+                <li>Aperiam neque id illum laudantium</li>
+                <li>Maiores facere est quidem</li>
+                <li>Laudantium autem vero</li>
+              </ul>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+
     </div>
 
      
@@ -138,40 +188,15 @@
           <div class="col-md-3 ml-auto">
             <h3>Links</h3>
             <ul class="list-unstyled footer-links">
-              <li><a href="#home-section" class="smoothscroll">Home</a></li>
-              <li><a href="#work-section" class="smoothscroll">Projects</a></li>
-              <li><a href="#process-section" class="smoothscroll">Process</a></li>
-              <li><a href="#testimonials-section" class="smoothscroll">Testimonials</a></li>
-              <li><a href="#services-section" class="smoothscroll">Services</a></li>
+              <li><a href="#home-section" class="nav-link">Home</a></li>
+              <li><a href="#section1" class="nav-link">Section 1</a></li>
+              <li><a href="#section2" class="nav-link">Section 2</a></li>
+              <li><a href="#section3" class="nav-link">Section 3</a></li>
             </ul>
           </div>
 
-          <div class="col-md-4">
-            <h3>Subscribe</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt iure iusto architecto? Numquam, natus?</p>
-            <form action="#">
-              <div class="d-flex mb-5">
-                <input type="text" class="form-control rounded-0" placeholder="Email">
-                <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
-              </div>
-            </form>
-          </div>
-
         </div>
 
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            
-            </div>
-          </div>
-          
-        </div>
       </div>
     </footer>
 
@@ -191,6 +216,8 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
   <script src="js/main.js"></script>
+  
+  <script src="js/branch.js"></script>
     
   
   </body>
