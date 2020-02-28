@@ -7,6 +7,9 @@
     <meta charset="UTF-8" />
     <!-- Branch Init-->
     <script type="text/javascript">
+        var options = {
+
+        };
         (function (b, r, a, n, c, h, _, s, d, k) {
             if (!b[n] || !b[n]._q) {
                 for (; s < _.length;) c(h, _[s++]);
@@ -28,39 +31,58 @@
             "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode"
             .split(" "), 0);
 
-        branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd');
+        branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd', options, function (err, data) {
+            console.log(data)
+            branch.setBranchViewData(linkData);
+        });
+        var linkData = {
+            campaign: 'SMS',
+            channel: 'Website',
+            feature: 'Text Me The App',
+            tags: [],
+            alias: '',
+            data: {
+                'custom_bool': true,
+                'custom_int': Date.now(),
+                'custom_string': 'you-can-do-it',
+                '$og_title': '[JustinFurstoss]TestApp',
+                '$og_description': 'Branch SDK Test App',
+                '$og_image_url': 'https://justinfurstossbranch.github.io/gif/you-can-do-it.gif'
+            }
+        };
+        var callback = function (err, result) {
+            if (err) {
+                alert("Sorry, something went wrong.");
+            } else {
+                window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                alert("SMS sent!");
+            }
+        };
+        var linkOptions = {};
 
         function sendSMS(form) {
             console.log(form);
             var phone = form.phone.value;
             console.log(phone);
-            var linkData = {
-                campaign: 'SMS',
-                channel: 'Website',
-                feature: 'Text Me The App',
-                tags: [],
-                alias: '',
-                data: {
-                    'custom_bool': true,
-                    'custom_int': Date.now(),
-                    'custom_string': 'you-can-do-it',
-                    '$og_title': '[JustinFurstoss]TestApp',
-                    '$og_description': 'Branch SDK Test App',
-                    '$og_image_url': 'https://justinfurstossbranch.github.io/gif/you-can-do-it.gif'
-                }
-            };
             console.log(linkData);
-            var options = {};
-            var callback = function (err, result) {
+            branch.sendSMS(phone, linkData, linkOptions, callback);
+            form.phone.value = "";
+        }
+
+        function createDeepLink() {
+            branch.link(linkData, function (err, link) {
+                console.log(link);
                 if (err) {
                     alert("Sorry, something went wrong.");
                 } else {
-                    window.location.href = 'https://justinfurstossbranch.github.io/third.html'
-                    alert("SMS sent!");
+                    // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                    alert("Deep Link Created!");
                 }
-            };
-            branch.sendSMS(phone, linkData, options, callback);
-            form.phone.value = "";
+            });
+        }
+
+        function trackEvent() {
+
         }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
