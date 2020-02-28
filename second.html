@@ -1,16 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>[JustinFurstoss]TestApp</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<style>
-    body {
-        font-family: "Helvetica Neue";
-    }
-</style>
+
+<head type="text/javascript">
+    <title>[JustinFurstoss]TestApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <!-- Branch Init-->
+    <script type="text/javascript">
+        (function (b, r, a, n, c, h, _, s, d, k) {
+            if (!b[n] || !b[n]._q) {
+                for (; s < _.length;) c(h, _[s++]);
+                d = r.createElement(a);
+                d.async = 1;
+                d.src = "https://cdn.branch.io/branch-latest.min.js";
+                k = r.getElementsByTagName(a)[0];
+                k.parentNode.insertBefore(d, k);
+                b[n] = h
+            }
+        })(window, document, "script", "branch", function (b, r) {
+                b[r] = function () {
+                    b._q.push([r, arguments])
+                }
+            }, {
+                _q: [],
+                _v: 1
+            },
+            "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode"
+            .split(" "), 0);
+
+        branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd');
+
+        function sendSMS(form) {
+            console.log(form);
+            var phone = form.phone.value;
+            console.log(phone);
+            var linkData = {
+                campaign: 'SMS',
+                channel: 'Website',
+                feature: 'Text Me The App',
+                tags: [],
+                alias: '',
+                data: {
+                    'custom_bool': true,
+                    'custom_int': Date.now(),
+                    'custom_string': 'you-can-do-it',
+                    '$og_title': '[JustinFurstoss]TestApp',
+                    '$og_description': 'Branch SDK Test App',
+                    '$og_image_url': 'https://justinfurstossbranch.github.io/gif/you-can-do-it.gif'
+                }
+            };
+            console.log(linkData);
+            var options = {};
+            var callback = function (err, result) {
+                if (err) {
+                    alert("Sorry, something went wrong.");
+                } else {
+                    window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                    alert("SMS sent!");
+                }
+            };
+            branch.sendSMS(phone, linkData, options, callback);
+            form.phone.value = "";
+        }
+    </script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        body {
+            font-family: "Helvetica Neue";
+        }
+    </style>
+</head>
 
 <body>
     <!-- Navbar -->
@@ -28,7 +89,6 @@
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
                     <a href="first.html" class="w3-bar-item w3-button">FIRST</a>
                     <a href="second.html" class="w3-bar-item w3-button">SECOND</a>
-                    <a href="third.html" class="w3-bar-item w3-button">THIRD</a>
                 </div>
             </div>
         </div>
@@ -40,26 +100,28 @@
         <a href="index.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOME</a>
         <a href="first.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">FIRST</a>
         <a href="second.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">SECOND</a>
-        <a href="third.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">THIRD</a>
     </div>
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about"></div>
+
     <!-- Page content -->
     <div class="w3-content" style="max-width:2000px;margin-top:46px">
         <!-- LOGO -->
         <div class=" w3-display-container w3-center">
             <img src="gifs/you-can-do-it.gif" style="height:80vmin; width:90vmin" />
             <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
-            <!-- Contact Form -->
-            <form id="phoneNumberForm">
+            <!-- Phone Number Form -->
+            <form onsubmit="sendSMS(this) ; return false;">
                 <div class="w3-content" style="max-width:2000px;margin-top:46px">
-                    <input type="phoneNumber" placeholder="Phone Number"
+                    <input placeholder="Phone Number"
                         style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
-                        id="cphoneNumber" required>
+                        id="phone" name="phone" type="tel">
+                    <!-- <br>
+          <input type="submit"> -->
                 </div>
                 <div class="w3-button">
                     <button id="submitPhoneNumber" type="submit" class="w3-wide"
-                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TEXT ME
-                        THE APP!</button>
+                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TEXT THE
+                        APP</button>
                 </div>
             </form>
             <!-- end of contact form -->
@@ -84,12 +146,6 @@
                     modal.style.display = "none";
                 }
             };
-        </script>
-        <script>
-            document.getElementById('submitPhoneNumber').addEventListener("click", function () {
-                let phoneNumber = document.getElementById("cphoneNumber")
-                console.log(phoneNumber.value)
-            });
         </script>
 </body>
 
