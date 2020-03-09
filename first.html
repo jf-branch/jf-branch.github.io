@@ -10,6 +10,21 @@
         var options = {
 
         };
+        var linkData = {
+            campaign: 'SMS',
+            channel: 'Website',
+            feature: 'Text Me The App',
+            tags: [],
+            alias: '',
+            data: {
+                'custom_bool': true,
+                'custom_int': Date.now(),
+                'gif': 'do-it',
+                '$og_title': '[JustinFurstoss]TestApp',
+                '$og_description': 'Branch SDK Test App',
+                '$og_image_url': 'https://justinfurstossbranch.github.io/gif/do-it.gif'
+            }
+        };
         (function (b, r, a, n, c, h, _, s, d, k) {
             if (!b[n] || !b[n]._q) {
                 for (; s < _.length;) c(h, _[s++]);
@@ -35,21 +50,6 @@
             console.log(data)
             branch.setBranchViewData(linkData);
         });
-        var linkData = {
-            campaign: 'SMS',
-            channel: 'Website',
-            feature: 'Text Me The App',
-            tags: [],
-            alias: '',
-            data: {
-                'custom_bool': true,
-                'custom_int': Date.now(),
-                'gif': 'do-it',
-                '$og_title': '[JustinFurstoss]TestApp',
-                '$og_description': 'Branch SDK Test App',
-                '$og_image_url': 'https://justinfurstossbranch.github.io/gif/do-it.gif'
-            }
-        };
         var callback = function (err, result) {
             if (err) {
                 alert("Sorry, something went wrong.");
