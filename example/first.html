@@ -95,7 +95,9 @@
 
         function closeBanner() {
             console.log("Close Banner");
-            branch.closeBanner();
+            branch.closeJourney(function (err, data) {
+                console.log(err, data);
+            });
         }
 
         function trackEvent() {
