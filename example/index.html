@@ -55,7 +55,9 @@
 
         branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd', options, function (err, data) {
             console.log(data)
-            branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
             branch.logEvent("pageview");
         });
         var linkOptions = {};
@@ -86,12 +88,16 @@
         function displayBanner() {
             console.log("Display Banner");
             // branch.setBranchViewData(linkData);
-            branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
         }
 
         function closeBanner() {
             console.log("Close Banner");
-            branch.closeBanner();
+            branch.closeBanner(function (err) {
+                console.log(err);
+            });
         }
 
         function trackEvent() {

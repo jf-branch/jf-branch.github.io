@@ -47,7 +47,9 @@
 
         branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd', options, function (err, data) {
             console.log(data)
-            branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
             branch.logEvent("pageview");
         });
         var callback = function (err, result) {
@@ -86,7 +88,9 @@
         function displayBanner() {
             console.log("Display Banner");
             // branch.setBranchViewData(linkData);
-            branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
         }
 
         function closeBanner() {
