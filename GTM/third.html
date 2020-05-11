@@ -2,119 +2,27 @@
 <html lang="en">
 
 <head type="text/javascript">
-    <title>[Example]</title>
+    <title>[GTM Example]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-    <!-- Branch Init-->
-    <script type="text/javascript">
-        var options = {
-
-        };
-        var linkData = {
-            campaign: 'SMS',
-            channel: 'Website',
-            feature: 'Text Me The App',
-            tags: [],
-            alias: '',
-            data: {
-                'custom_bool': true,
-                'custom_int': Date.now(),
-                'gif': 'do-it',
-                '$og_title': '[Example]',
-                '$og_description': 'Branch SDK Test App',
-            }
-        };
-        (function (b, r, a, n, c, h, _, s, d, k) {
-            if (!b[n] || !b[n]._q) {
-                for (; s < _.length;) c(h, _[s++]);
-                d = r.createElement(a);
-                d.async = 1;
-                d.src = "https://cdn.branch.io/branch-latest.min.js";
-                k = r.getElementsByTagName(a)[0];
-                k.parentNode.insertBefore(d, k);
-                b[n] = h
-            }
-        })(window, document, "script", "branch", function (b, r) {
-                b[r] = function () {
-                    b._q.push([r, arguments])
-                }
-            }, {
-                _q: [],
-                _v: 1
-            },
-            "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode"
-            .split(" "), 0);
-
-        branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd', options, function (err, data) {
-            console.log(data)
-            branch.setBranchViewData(linkData, function (data, err) {
-                console.log(err);
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
             });
-        });
-        var callback = function (err, result) {
-            console.log(err);
-            if (err) {
-                alert("Sorry, something went wrong.");
-            } else {
-                // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
-                alert("SMS sent!");
-            }
-        };
-        var linkOptions = {};
-
-        function sendSMS(form) {
-            console.log(form);
-            var phone = form.phone.value;
-            console.log(phone);
-            console.log(linkData);
-            branch.sendSMS(phone, linkData, linkOptions, callback);
-            form.phone.value = "";
-        }
-
-        function createDeepLink() {
-            branch.link(linkData, function (err, link) {
-                console.log(link);
-                if (err) {
-                    alert("Sorry, something went wrong.");
-                } else {
-                    var x = document.getElementById("link");
-                    x.value = link;
-                    // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
-                    alert("Deep Link Created! " + link);
-                }
-            });
-        }
-
-        function displayBanner() {
-            console.log("Display Banner");
-            // branch.setBranchViewData(linkData);
-            branch.setBranchViewData(linkData, function (data, err) {
-                console.log(err);
-            });
-        }
-
-        function closeBanner() {
-            console.log("Close Banner");
-            branch.closeJourney(function (err, data) {
-                console.log(err, data);
-            });
-        }
-
-        function trackEvent() {
-            console.log("Track Event");
-            branch.logEvent(
-                "custom_event", {
-                    metadata: '123'
-                },
-                function (err) {
-                    console.log(err);
-                    if (!err) {
-                        alert("Event Tracked!")
-                    }
-                }
-            );
-        }
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MD8RXK6');
     </script>
+    <!-- End Google Tag Manager -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -126,6 +34,10 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD8RXK6" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navbar -->
     <div class="w3-top">
         <div class="w3-bar w3-white w3-card">
@@ -161,7 +73,7 @@
     <div class="w3-content" style="max-width:2000px;margin-top:46px">
         <!-- LOGO -->
         <div class=" w3-display-container w3-center">
-            <h1>FIRST PAGE</h1>
+            <h1>THIRD PAGE</h1>
             <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
             <!-- Phone Number Form -->
             <form onsubmit="sendSMS(this) ; return false;">
