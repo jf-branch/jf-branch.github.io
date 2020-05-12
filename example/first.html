@@ -24,29 +24,10 @@
                 '$og_description': 'Branch SDK Test App',
             }
         };
-        (function (b, r, a, n, c, h, _, s, d, k) {
-            if (!b[n] || !b[n]._q) {
-                for (; s < _.length;) c(h, _[s++]);
-                d = r.createElement(a);
-                d.async = 1;
-                d.src = "https://cdn.branch.io/branch-latest.min.js";
-                k = r.getElementsByTagName(a)[0];
-                k.parentNode.insertBefore(d, k);
-                b[n] = h
-            }
-        })(window, document, "script", "branch", function (b, r) {
-                b[r] = function () {
-                    b._q.push([r, arguments])
-                }
-            }, {
-                _q: [],
-                _v: 1
-            },
-            "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode"
-            .split(" "), 0);
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
 
         branch.init('key_test_kjNVGrmfIScchFcS5tir4jfaDqjRJIbd', options, function (err, data) {
-            console.log(data)
+            console.log(data);
             branch.setBranchViewData(linkData, function (data, err) {
                 console.log(err);
             });
@@ -54,6 +35,7 @@
         var callback = function (err, result) {
             console.log(err);
             if (err) {
+                console.log(err);
                 alert("Sorry, something went wrong.");
             } else {
                 // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
