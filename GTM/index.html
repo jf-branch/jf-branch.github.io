@@ -72,7 +72,7 @@
                         id="phone" name="phone" type="tel">
                 </div>
                 <div class="w3-button">
-                    <button id="submitPhoneNumber" type="submit" class="w3-wide"
+                    <button id="submitPhoneNumber" type="submit" onclick="dataLayer.push({'event': 'Send SMS Event', 'formName' : 'smsForm', 'value': this.phone.value});" class="w3-wide"
                         style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TEXT THE
                         APP</button>
                 </div>
@@ -98,7 +98,7 @@
                     JOURNEY</button>
             </div>
             <div class="w3-button">
-                <button id="logEvent" type="logEvent" class="w3-wide" onclick="dataLayer.push({'event': 'Send SMS Event', 'formName' : 'smsForm'});"
+                <button id="logEvent" type="logEvent" class="w3-wide" onclick="dataLayer.push({'event': 'Log Event'});"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">LOG
                     EVENT</button>
             </div>
