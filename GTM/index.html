@@ -65,7 +65,7 @@
             <h1>HOME</h1>
             <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
             <!-- Phone Number Form -->
-            <form id="sendSMS" name="sendSMS" >
+            <form id="sendSMS" name="sendSMS" onsubmit="dataLayer.push({'event': 'Send SMS Event'});" >
                 <div class=" w3-content" style="max-width:2000px;margin-top:46px">
                     <input placeholder="Phone Number"
                         style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
