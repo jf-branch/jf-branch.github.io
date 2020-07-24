@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head type="text/javascript">
+    <title>[First Republic Bank]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <!-- Branch Init-->
+    <script type="text/javascript">
+        var options = {
+
+        };
+        var linkData = {
+            campaign: 'SMS',
+            channel: 'Website',
+            feature: 'Text Me The App',
+            tags: [],
+            alias: '',
+            data: {
+                'custom_bool': true,
+                'custom_int': Date.now(),
+                'gif': 'do-it',
+                '$og_title': '[Example]',
+                '$og_description': 'Branch SDK Test App',
+            }
+        };
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+
+        branch.init('key_test_mcNHPxeaJLjmeCmGWvbsWnkpusfOSMke', options, function (err, data) {
+            console.log("Data");
+            console.log(data);
+            console.log("Error");
+            console.log(err);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
+        });
+        var callback = function (err, result) {
+            console.log(err);
+            if (err) {
+                console.log(err);
+                alert("Sorry, something went wrong.");
+            } else {
+                // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                alert("SMS sent!");
+            }
+        };
+        var linkOptions = {};
+
+        function sendSMS(form) {
+            console.log(form);
+            var phone = form.phone.value;
+            console.log(phone);
+            console.log(linkData);
+            branch.sendSMS(phone, linkData, linkOptions, callback);
+            form.phone.value = "";
+        }
+
+        function createDeepLink() {
+            branch.link(linkData, function (err, link) {
+                console.log(link);
+                if (err) {
+                    alert("Sorry, something went wrong.");
+                } else {
+                    var x = document.getElementById("link");
+                    x.value = link;
+                    // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                    alert("Deep Link Created! " + link);
+                }
+            });
+        }
+
+        function displayBanner() {
+            console.log("Display Banner");
+            // branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
+        }
+
+        function closeBanner() {
+            console.log("Close Banner");
+            branch.closeJourney(function (err, data) {
+                console.log(err, data);
+            });
+        }
+
+        function trackEvent() {
+            console.log("Track Event");
+            branch.logEvent(
+                "custom_event", {
+                    metadata: '123'
+                },
+                function (err) {
+                    console.log(err);
+                    if (!err) {
+                        alert("Event Tracked!")
+                    }
+                }
+            );
+        }
+    </script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        body {
+            font-family: "Helvetica Neue";
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="index.html" class="w3-bar-item w3-button w3-padding-large">[EXAMPLE]</a>
+            <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="Sections">
+                    SECTIONS<i class="fa fa-caret-down"></i>
+                </button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="first.html" class="w3-bar-item w3-button">FIRST</a>
+                    <a href="second.html" class="w3-bar-item w3-button">SECOND</a>
+                    <a href="third.html" class="w3-bar-item w3-button">THIRD</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div id="navigation" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top"
+        style="margin-top:46px">
+        <a href="index.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOME</a>
+        <a href="first.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">FIRST</a>
+        <a href="second.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">SECOND</a>
+        <a href="third.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">THIRD</a>
+    </div>
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about"></div>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px">
+        <!-- LOGO -->
+        <div class=" w3-display-container w3-center">
+            <h1>First Republic  Bank </h1>
+            <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
+            <a href="https://firstrepublic.app.link" id="branchLink" class="w3-wide"
+            style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">BRANCH LINK</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navigation");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        var modal = document.getElementById("ticketModal");
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
