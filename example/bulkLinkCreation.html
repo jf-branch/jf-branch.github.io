@@ -208,6 +208,9 @@
             var tags = document.getElementById('tags').value;
             tags = tags.split(',');
             var enrollmentURLS = document.getElementById('enrollment_urls').value.split(" ");
+            var desktopURL = document.getElementById('desktop_fallback').value;
+            var iOSURL = document.getElementById('iOS_fallback').value;
+            var androidURL = document.getElementById('android_fallback').value;
 
             var j;
             for (j = 0; j < enrollmentURLS.length; j++) {
@@ -220,7 +223,10 @@
                 tags: tags,
                 data: {
                     $deeplink_path: deeplinkValue,
-                    enrollment_url: enrollmentURL
+                    enrollment_url: enrollmentURL,
+                    $desktop_url: desktopURL,
+                    $android_url: androidURL,
+                    $iOS_url: iOSURL
                 }
             };
                 finalData.push(linkData);
@@ -242,7 +248,8 @@
         }
 
         function exportCSV() {
-            let data = document.getElementById('final_urls').value;
+            let data = document.getElementById('final_urls').value.split(",").map(e => [[e]]);
+            console.log(data);
             if (data != "" || data != null) {
                 let csvContent = "data:text/csv;charset=utf-8," 
                 + data;
