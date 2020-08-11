@@ -1,0 +1,406 @@
+<html>
+
+<head>
+    <title>Bulk Link Creation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="//branch.io/img/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="//branch.io/img/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="//branch.io/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="//branch.io/img/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="//branch.io/img/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="//branch.io/img/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="//branch.io/img/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="//branch.io/img/favicon/apple-touch-icon-152x152.png">
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .page-header,
+        .panel-title,
+        label {
+            font-weight: lighter
+        }
+
+        .btn,
+        .page-header {
+            text-transform: uppercase
+        }
+
+        body {
+            font-family: "Open Sans", Helvetica, Arial;
+            background-color: #fafafa;
+            color: #444
+        }
+
+        label {
+            font-size: 110%
+        }
+
+        .panel-body {
+            display: grid
+        }
+
+        .panel-header {
+            margin-top: 70px
+        }
+
+        .page-header {
+            font-size: 300%;
+            margin-bottom: 30px
+        }
+
+        .panel-title {
+            font-size: 150%
+        }
+
+        .label {
+            display: inline-flex
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+            height: inherit
+        }
+
+        .redactor_box,
+        input.form-control,
+        option,
+        select {
+            border-radius: 3px;
+            border-color: #eee;
+            font-size: 16px;
+            line-height: normal;
+            margin-right: 0;
+            padding: 15px 20px;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            width: 100%;
+            color: #444;
+            font-weight: 400;
+            background: #fff
+        }
+
+        .btn {
+            background-color: #1cadce;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+            padding: 15px 15px;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            color: #fff;
+            transition: background 250ms;
+            -webkit-transition: background 250ms;
+            margin: 30px auto 30px;
+            min-width: 170px
+        }
+
+        #final_urls {
+            margin-top: 2%;
+            margin-bottom: 5%;
+            font-weight: lighter;
+            font-size: 110%
+        }
+
+        .navbar-brand img {
+            max-height: 40px
+        }
+
+        nav.navbar-main {
+            padding: 2px 0;
+            background-color: #2F2F2F;
+            position: fixed;
+            width: 100%;
+            z-index: 99;
+            border-radius: 0
+        }
+
+        .brand {
+            margin-top: -10px
+        }
+
+        .custom-select {
+            width: 145px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 100;
+        }
+
+        p {
+            font-style: italic;
+            font-size: 85%;
+        }
+
+        .extra-field {
+            display: inline-flex;
+        }
+
+        .extra-field-input {
+            margin: 10px 40px 10px 40px !important;
+        }
+
+        .add-field-btn {
+            font-size: 12px;
+        }
+    </style>
+
+    <script>
+        (function (b, r, a, n, c, h, _, s, d, k) {
+            if (!b[n] || !b[n]._q) {
+                for (; s < _.length;) c(h, _[s++]);
+                d = r.createElement(a);
+                d.async = 1;
+                d.src = "https://cdn.branch.io/branch-latest.min.js";
+                k = r.getElementsByTagName(a)[0];
+                k.parentNode.insertBefore(d, k);
+                b[n] = h
+            }
+        })(window, document, "script", "branch", function (b, r) {
+                b[r] = function () {
+                    b._q.push([r, arguments])
+                }
+            }, {
+                _q: [],
+                _v: 1
+            },
+            "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode"
+            .split(" "), 0);
+        branch.init('key_test_hcGYfaAnBPHUutc7SRmrSgjdCrgZ30RL');
+
+        function createLink() {
+            var linkData = generateLinkData();
+            const url = 'https://api2.branch.io/v1/url/bulk/key_test_hcGYfaAnBPHUutc7SRmrSgjdCrgZ30RL';
+            $.post(url, linkData, function (data, error) {
+                if (error != null) {
+                    document.getElementById('final_urls').value = error.toString();
+                    return
+                } else {
+                    let links = JSON.stringify(data);
+                    document.getElementById('final_urls').value = links;
+                }
+            });
+        }
+
+        function generateLinkData() {
+            var finalData = []
+            document.getElementById('final_urls').value = 'Generating Link Data...';
+            var channel = document.getElementById('channel').value;
+            var deeplinkValue = document.getElementById('deeplink_value').value;
+            var campaign = document.getElementById('campaign').value;
+            var feature = document.getElementById('feature').value;
+            var stage = document.getElementById('stage').value;
+            var tags = document.getElementById('tags').value;
+            tags = tags.split(',');
+            var enrollmentURLS = document.getElementById('enrollment_urls').value.split(" ");
+
+            var j;
+            for (j = 0; j < enrollmentURLS.length; j++) {
+                const enrollmentURL = enrollmentURLS[j].toString();
+                const linkData = {
+                channel: channel,
+                campaign: campaign,
+                feature: feature,
+                stage: stage,
+                tags: tags,
+                data: {
+                    $deeplink_path: deeplinkValue,
+                    enrollment_url: enrollmentURL
+                }
+            };
+                finalData.push(linkData);
+            };
+
+            const url = 'https://api2.branch.io/v1/url/bulk/key_test_hcGYfaAnBPHUutc7SRmrSgjdCrgZ30RL';
+            $.post(url, JSON.stringify(finalData), function (data, status) {
+                console.log("Error");
+                console.log(status);
+                console.log("Data");
+                console.log(data);
+                console.log(data.length);
+                if (status != 'success') {
+                    document.getElementById('final_urls').value = "Error retrieving bulk links.";
+                }               
+                document.getElementById('final_urls').value = data.map(e => e["url"]);
+
+            });
+        }
+
+        function exportCSV() {
+            let data = document.getElementById('final_urls').value;
+            if (data != "" || data != null) {
+                let csvContent = "data:text/csv;charset=utf-8," 
+                + data;
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "BranchLinks.csv");
+                document.body.appendChild(link);
+                link.click(); 
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top navbar-main">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand brand">
+                    <a href="https://branch.io" target="_blank" class="logo-container">
+                        <div class="branch-logo"><img src="https://branch.io/img/logo_white.png" alt="BranchMetrics"
+                                title="Branch Metrics"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="panel-header page-header">
+            Bulk Link Creation
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#basic_fields"
+                                aria-expanded="false" aria-controls="other_fields">
+                                Analytics
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="basic_fields" class="collapse">
+                        <div class="panel-body">
+                            <label>Channel (Optional):
+                                <p>Where will this be used/posted?</p>
+                                <input type="text" id="channel" class="form-control" value="">
+                            </label>
+                            <label>Feature (Optional):
+                                <p>The Feature the link is offering.</p>
+                                <input type="text" id="feature" class="form-control" value="">
+                            </label>
+                            <label>Campaign (Optional):
+                                <p>The Social or marketing campaign name.</p>
+                                <input type="text" id="campaign" class="form-control" value="">
+                            </label>
+                            <label>Stage (Optional):
+                                <p>At which point in aquisition are your users at.</p>
+                                <input type="text" id="stage" class="form-control" value="">
+                            </label>
+                            <label>Tags (Optional):
+                                <p>Analytics tags, enter comma-separated values. (eg. tag1,tag2,tag3).</p>
+                                <input type="text" id="tags" class="form-control" value="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#dl_fields" aria-expanded="false"
+                                aria-controls="other_fields">
+                                Deep Linking Data
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="dl_fields" class="collapse">
+                        <div class="panel-body">
+                            <label>Deeplink Value (Optional):
+                                <p>Used for deep linking into the FRB mobile app.</p>
+                                <input type="text" id="deeplink_value" class="form-control" value="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#fallback_fields"
+                                aria-expanded="false" aria-controls="other_fields">
+                                Fallback URLs
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="fallback_fields" class="collapse">
+                        <div class="panel-body">
+                            <label>Desktop Fallback URL (Optional):
+                                <p>Where to drive Desktop Web users. If no value is specified, user will be taken to
+                                    https://www.firstrepublic.com/bankingonline.</p>
+                                <input type="text" id="desktop_fallback" class="form-control" value="">
+                            </label>
+                            <label>iOS Fallback URL (Optional):
+                                <p>Where to drive iOS mWeb users without the app installed. If no value
+                                    is specified, user will be taken to the App Store.</p>
+                                <input type="text" id="iOS_fallback" class="form-control" value="">
+                            </label>
+                            <label>Android Fallback URL (Optional):
+                                <p>Where to drive Android mWeb users without the app installed. If no value
+                                    is specified, user will be taken to the Play Store..</p>
+                                <input type="text" id="android_fallback" class="form-control" value="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#custom_data" aria-expanded="false"
+                                aria-controls="other_fields">
+                                Custom Data
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="custom_data" class="collapse">
+                        <div class="panel-body">
+                            <label>Enrollment URLs (Optional):
+                                <p>Declare unique Enrollment URLs of which Branch Links will be returned in same order.
+                                    Seperate only by spaces.</p>
+                                <input type="text" id="enrollment_urls" class="form-control" value="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-info" onclick="generateLinkData()">Create Links</button>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <input type="text" id="final_urls" class="form-control" value="Generated Links" readonly="">
+                    </div>
+                </div>
+                <button class="btn btn-info" onclick="exportCSV()">Export CSV</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<div id="ghq-guru-2-104-59">
+    <div class="ghq-ext-app" tabindex="0">
+        <div id="ghq-notifications">
+            <div></div>
+        </div>
+    </div>
+</div>
+
+</html>

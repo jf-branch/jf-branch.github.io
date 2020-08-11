@@ -1,11 +1,20 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "R63EM248DP.io.branch.JustinFurstossTestApp-iOS-1",
-                "paths": ["*"]
-            }
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "R63EM248DP.io.branch.Master-Proserve-iOS",
+        "paths": [
+          "NOT /e/*",
+          "*",
+          "/"
         ]
-    }
+      }
+    ]
+  },
+  "appclips": {
+    "apps": ["R63EM248DP.io.branch.Master-Proserve-iOS.Clip"]
+ }
 }
+
+,
