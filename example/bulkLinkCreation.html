@@ -216,49 +216,54 @@
             for (j = 0; j < enrollmentURLS.length; j++) {
                 const enrollmentURL = enrollmentURLS[j].toString();
                 const linkData = {
-                channel: channel,
-                campaign: campaign,
-                feature: feature,
-                stage: stage,
-                tags: tags,
-                data: {
-                    $deeplink_path: deeplinkValue,
-                    enrollment_url: enrollmentURL,
-                    $desktop_url: desktopURL,
-                    $android_url: androidURL,
-                    $iOS_url: iOSURL
-                }
-            };
+                    channel: channel,
+                    campaign: campaign,
+                    feature: feature,
+                    stage: stage,
+                    tags: tags,
+                    data: {
+                        $deeplink_path: deeplinkValue,
+                        enrollment_url: enrollmentURL,
+                        $desktop_url: desktopURL,
+                        $android_url: androidURL,
+                        $iOS_url: iOSURL
+                    }
+                };
                 finalData.push(linkData);
             };
 
             const url = 'https://api2.branch.io/v1/url/bulk/key_test_hcGYfaAnBPHUutc7SRmrSgjdCrgZ30RL';
             $.post(url, JSON.stringify(finalData), function (data, status) {
-                console.log("Error");
-                console.log(status);
-                console.log("Data");
-                console.log(data);
-                console.log(data.length);
                 if (status != 'success') {
                     document.getElementById('final_urls').value = "Error retrieving bulk links.";
-                }               
-                document.getElementById('final_urls').value = data.map(e => e["url"]);
-
+                }
+                // document.getElementById('final_urls').value = data.map(e => e["url"]);
+                const mappedData = data.map(e => e["url"]);
+                var j;
+                for (j = 0; j < mappedData.length; j++) {
+                    console.log(mappedData[j]);
+                    var newField = '<li>'+ mappedData[j] + '</li>';
+                    newField.value = mappedData[j];
+                    document.getElementById('links_list').innerHTML += newField;
+                };
             });
         }
 
         function exportCSV() {
-            let data = document.getElementById('final_urls').value.split(",").map(e => [[e]]);
+            const data = document.getElementById('final_urls').value.split(",");
             console.log(data);
+            const formattedData = data.map(e => [e]);
+            formattedData.map(e => e.join(",")).join("\n");
+            console.log(formattedData);
             if (data != "" || data != null) {
-                let csvContent = "data:text/csv;charset=utf-8," 
-                + data;
+                let csvContent = "data:text/csv;charset=utf-8," +
+                    formattedData;
                 var encodedUri = encodeURI(csvContent);
                 var link = document.createElement("a");
                 link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "BranchLinks.csv");
+                link.setAttribute("download", "BranchLinks" + Date.now().toString() + ".csv");
                 document.body.appendChild(link);
-                link.click(); 
+                link.click();
             }
         }
     </script>
@@ -393,6 +398,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <input type="text" id="final_urls" class="form-control" value="Generated Links" readonly="">
+                        <ol type="1" id="links_list"></ol>
                     </div>
                 </div>
                 <button class="btn btn-info" onclick="exportCSV()">Export CSV</button>
