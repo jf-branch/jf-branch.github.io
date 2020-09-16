@@ -121,9 +121,7 @@
         }
         function triggerInAppEvent() {
             console.log("Triggered In App Event");
-            postMessage({eventName: "Window In-app Event"});
-            var x = document.getElementById("inAppEvent");
-            x.postMessage({eventName: "Button In-app Event"});
+            window.postMessage({eventName: "Window In-app Event"});
         }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -218,7 +216,7 @@
                     EVENT</button>
             </div>
             <div class="w3-button">
-                <button id="inAppEvent" type="logEvent" class="w3-wide" onclick="triggerInAppEvent()"
+                <button id="inAppEvent" type="inAppEvent" class="w3-wide" onclick="triggerInAppEvent()"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER IN-APP EVENT</button>
             </div>
         </div>
