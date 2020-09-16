@@ -122,7 +122,7 @@
         function triggerInAppEvent() {
             console.log("Triggered In App Event");
             postMessage({eventName: "Window In-app Event"});
-            var x = document.getElementById("inApEvent");
+            var x = document.getElementById("inAppEvent");
             x.postMessage({eventName: "Button In-app Event"});
         }
     </script>
