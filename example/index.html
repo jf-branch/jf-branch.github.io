@@ -121,7 +121,9 @@
         }
         function triggerInAppEvent() {
             console.log("Triggered In App Event");
-            window.postMessage({eventName: "In-app Event"});
+            postMessage({eventName: "Window In-app Event"});
+            var x = document.getElementById("inApEvent");
+            x.postMessage({eventName: "Button In-app Event"});
         }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
