@@ -101,6 +101,7 @@
 
         function createDeepLink() {
             branch.link(getBranchLinkData(), function (err, link) {
+                console.log(getBranchLinkData());
                 console.log(link);
                 if (err) {
                     alert("Sorry, something went wrong.");
@@ -115,6 +116,7 @@
 
         function displayBanner() {
             console.log("Display Banner");
+            console.log(getBranchLinkData());
             branch.setBranchViewData(getBranchLinkData(), function (data, err) {
                 console.log(err);
             });
