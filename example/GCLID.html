@@ -18,6 +18,7 @@
         var options = {
 
         };
+
         function getBranchLinkData(isTMTA, isBadge) {
             if (GCLID != null) {
                 return {
@@ -45,7 +46,7 @@
                         '$og_description': 'Branch SDK Test App',
                     }
                 };
-            }  else if (isBadge) {
+            } else if (isBadge) {
                 return {
                     campaign: 'App Badge',
                     channel: 'Website',
@@ -63,16 +64,16 @@
             }
         };
 
-            var callback = function (err, result) {
+        var callback = function (err, result) {
+            console.log(err);
+            if (err) {
                 console.log(err);
-                if (err) {
-                    console.log(err);
-                    alert("Sorry, something went wrong.");
-                } else {
-                    // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
-                    alert("SMS sent!");
-                }
-            };
+                alert("Sorry, something went wrong.");
+            } else {
+                // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                alert("SMS sent!");
+            }
+        };
         (function (b, r, a, n, c, h, _, s, d, k) {
             if (!b[n] || !b[n]._q) {
                 for (; s < _.length;) c(h, _[s++]);
@@ -237,15 +238,11 @@
                         APP</button>
                 </div>
             </form>
-            <form onsubmit="badgeClicked() ; return false;">
-                <input placeholder="Branch Link"
-                    style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
-                    id="link" name="link" type="tel">
-                <div class="w3-button">
-                    <button id="badgeClicked" type="create" class="w3-wide"
-                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">App Store Badge</button>
-                </div>
-            </form>
+            <div class="w3-button">
+                <button id="badgeClicked" type="create" class="w3-wide"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">App Store
+                    Badge</button>
+            </div>
             <form onsubmit="createDeepLink() ; return false;">
                 <input placeholder="Branch Link"
                     style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
