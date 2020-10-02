@@ -15,9 +15,6 @@
         const channel = urlParams.get('utm_source');
         const feature = urlParams.get('utm_medium');
         const GCLID = urlParams.get('GCLID');
-        var options = {
-
-        };
 
         function getBranchLinkData(isTMTA, isBadge) {
             if (GCLID != null) {
@@ -72,6 +69,7 @@
             } else {
                 // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
                 alert("SMS sent!");
+                form.phone.value = "";
             }
         };
         (function (b, r, a, n, c, h, _, s, d, k) {
@@ -109,7 +107,6 @@
             console.log(phone);
             console.log(getBranchLinkData(true, false));
             branch.sendSMS(phone, getBranchLinkData(true, false), linkOptions, callback);
-            form.phone.value = "";
         }
 
         function badgeClicked() {
