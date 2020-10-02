@@ -18,7 +18,7 @@
         var options = {
 
         };
-        function getBranchLinkData(isTMTA) {
+        function getBranchLinkData(isTMTA, isBadge) {
             if (GCLID != null) {
                 return {
                     campaign: campaign,
@@ -45,7 +45,22 @@
                         '$og_description': 'Branch SDK Test App',
                     }
                 };
-            } 
+            }  else if (isBadge) {
+                return {
+                    campaign: 'App Badge',
+                    channel: 'Website',
+                    feature: 'Download the App',
+                    tags: [],
+                    alias: '',
+                    data: {
+                        'custom_bool': true,
+                        'custom_int': Date.now(),
+                        'gif': 'just-do-it',
+                        '$og_title': '[Example]',
+                        '$og_description': 'Branch SDK Test App',
+                    }
+                }
+            }
         };
 
             var callback = function (err, result) {
@@ -91,14 +106,14 @@
             console.log(form);
             var phone = form.phone.value;
             console.log(phone);
-            console.log(getBranchLinkData(true));
-            branch.sendSMS(phone, getBranchLinkData(), linkOptions, callback);
+            console.log(getBranchLinkData(true, false));
+            branch.sendSMS(phone, getBranchLinkData(true, false), linkOptions, callback);
             form.phone.value = "";
         }
 
         function createDeepLink() {
-            branch.link(getBranchLinkData(false), function (err, link) {
-                console.log(getBranchLinkData(false));
+            branch.link(getBranchLinkData(false, true), function (err, link) {
+                console.log(getBranchLinkData(false, true));
                 console.log(link);
                 if (err) {
                     alert("Sorry, something went wrong.");
