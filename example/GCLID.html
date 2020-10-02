@@ -84,7 +84,7 @@
             console.log(data);
             console.log("Error");
             console.log(err);
-            branch.setBranchViewData(tmtaLinkData, function (data, err) {
+            branch.setBranchViewData(getBranchLinkData(), function (data, err) {
                 console.log(err);
             });
         });
@@ -94,7 +94,7 @@
             console.log(form);
             var phone = form.phone.value;
             console.log(phone);
-            console.log(tmtaLinkData);
+            console.log(getBranchLinkData());
             branch.sendSMS(phone, getBranchLinkData(), linkOptions, callback);
             form.phone.value = "";
         }
