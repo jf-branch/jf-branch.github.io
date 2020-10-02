@@ -18,7 +18,7 @@
         var options = {
 
         };
-        function getBranchLinkData() {
+        function getBranchLinkData(isTMTA) {
             if (GCLID != null) {
                 return {
                     campaign: campaign,
@@ -30,7 +30,7 @@
                         '~gclid': GCLID
                     }
                 };
-            } else {
+            } else if (isTMTA) {
                 return {
                     campaign: 'SMS',
                     channel: 'Website',
@@ -45,7 +45,7 @@
                         '$og_description': 'Branch SDK Test App',
                     }
                 };
-            }
+            } 
         };
 
             var callback = function (err, result) {
@@ -84,9 +84,6 @@
             console.log(data);
             console.log("Error");
             console.log(err);
-            branch.setBranchViewData(getBranchLinkData(), function (data, err) {
-                console.log(err);
-            });
         });
         var linkOptions = {};
 
@@ -94,13 +91,13 @@
             console.log(form);
             var phone = form.phone.value;
             console.log(phone);
-            console.log(getBranchLinkData());
+            console.log(getBranchLinkData(true));
             branch.sendSMS(phone, getBranchLinkData(), linkOptions, callback);
             form.phone.value = "";
         }
 
         function createDeepLink() {
-            branch.link(getBranchLinkData(), function (err, link) {
+            branch.link(getBranchLinkData(false), function (err, link) {
                 console.log(getBranchLinkData());
                 console.log(link);
                 if (err) {
