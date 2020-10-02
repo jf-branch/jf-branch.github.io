@@ -111,6 +111,18 @@
             form.phone.value = "";
         }
 
+        function badgeClicked() {
+            branch.link(getBranchLinkData(false, true), function (err, link) {
+                console.log(getBranchLinkData(false, true));
+                console.log(link);
+                if (err) {
+                    alert("Sorry, something went wrong.");
+                } else {
+                    window.open(link);
+                }
+            });
+        }
+
         function createDeepLink() {
             branch.link(getBranchLinkData(false, true), function (err, link) {
                 console.log(getBranchLinkData(false, true));
@@ -223,6 +235,15 @@
                         style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TEXT
                         THE
                         APP</button>
+                </div>
+            </form>
+            <form onsubmit="badgeClicked() ; return false;">
+                <input placeholder="Branch Link"
+                    style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
+                    id="link" name="link" type="tel">
+                <div class="w3-button">
+                    <button id="badgeClicked" type="create" class="w3-wide"
+                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">App Store Badge</button>
                 </div>
             </form>
             <form onsubmit="createDeepLink() ; return false;">
