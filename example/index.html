@@ -122,6 +122,10 @@
         function triggerInAppEvent() {
             console.log("Triggered In App Event");
         }
+        function setIdentity() {
+            console.log("Sent Identity");
+            branch.setIdentity("Justin Branch");
+        }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
@@ -217,6 +221,10 @@
             <div class="w3-button">
                 <button id="inAppEvent" type="inAppEvent" class="w3-wide" onclick="triggerInAppEvent()"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER IN-APP EVENT</button>
+            </div>
+            <div class="w3-button">
+                <button id="setIdentity" type="setIdentity" class="w3-wide" onclick="setIdentity()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set Identity</button>
             </div>
         </div>
     </div>
