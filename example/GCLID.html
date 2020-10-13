@@ -13,8 +13,9 @@
         const urlParams = new URLSearchParams(queryString);
         const campaign = urlParams.get('utm_campaign');
         const channel = urlParams.get('utm_source');
-        const feature = urlParams.get('utm_medium');
-        const GCLID = urlParams.get('GCLID');
+        const feature = urlParams.get('utm_Imedium');
+        const GCLID = urlParams.get('gclid');
+        const FBCLID = urlParams.get('fbclid');
 
         function getBranchLinkData(isTMTA, isBadge) {
             if (GCLID != null) {
@@ -28,7 +29,20 @@
                         '~gclid': GCLID
                     }
                 };
-            } else if (isTMTA) {
+            } 
+            if (FBCLID != null) {
+                return {
+                    campaign: campaign,
+                    channel: channel,
+                    feature: feature,
+                    tags: [],
+                    alias: '',
+                    data: {
+                        '~fbclid': FBCLID
+                    }
+                };
+            }
+            if (isTMTA) {
                 return {
                     campaign: 'SMS',
                     channel: 'Website',
@@ -43,7 +57,8 @@
                         '$og_description': 'Branch SDK Test App',
                     }
                 };
-            } else if (isBadge) {
+            } 
+            if (isBadge) {
                 return {
                     campaign: 'App Badge',
                     channel: 'Website',
@@ -169,6 +184,10 @@
         function triggerInAppEvent() {
             console.log("Triggered In App Event");
         }
+        function setIdentity() {
+            console.log("Sent Identity");
+            branch.setIdentity("Justin Branch");
+        }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
@@ -270,6 +289,10 @@
                 <button id="inAppEvent" type="inAppEvent" class="w3-wide" onclick="triggerInAppEvent()"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER
                     IN-APP EVENT</button>
+            </div>
+            <div class="w3-button">
+                <button id="setIdentity" type="setIdentity" class="w3-wide" onclick="setIdentity()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set Identity</button>
             </div>
         </div>
     </div>
