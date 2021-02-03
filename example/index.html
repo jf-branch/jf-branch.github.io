@@ -119,9 +119,14 @@
                 }
             );
         }
-        function triggerInAppEvent() {
-            console.log("Triggered In App Event");
-        }
+            function triggerInAppEvent() {
+                window.parent.postMessage({
+                    type: 'hellosign:verifyDomainRequest',
+                    payload: {
+                        token: "some shit token",
+                    },
+                }, "https://randomurl.com");
+            }
         function setIdentity() {
             console.log("Sent Identity");
             branch.setIdentity("Justin Branch");
@@ -237,6 +242,41 @@
             </div>
         </div>
     </div>
+
+
+
+    <p style="margin-bottom:40px;margin-top:40px">
+        "
+            If you're having trouble with the button above, copy and paste this URL below into your web browser: 
+        "
+        <a href="stytchapp://http://stytch.com/login_magic_link?token=Y7bYpfJTgjJxrguEzVcr36KOYaW_HiiXCqmBtMkhv6k%3D" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://stytch.com/login_magic_link?token%3DY7bYpfJTgjJxrguEzVcr36KOYaW_HiiXCqmBtMkhv6k%253D&amp;source=gmail&amp;ust=1611349836504000&amp;usg=AFQjCNFv1dz9BJR3YXdSEb1UvpEfP48fQw">stytch.com/login_<wbr>magic_link?token=<wbr>Y7bYpfJTgjJxrguEzVcr36KOYaW_<wbr>HiiXCqmBtMkhv6k%3D</a>
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <script>
