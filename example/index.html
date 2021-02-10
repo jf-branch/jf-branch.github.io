@@ -56,10 +56,10 @@
             "addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking"
             .split(" "), 0);
         console.log(navigator.userAgent.toString());
-        var isiOSWebView = navigator.userAgent.toString().includes("ARC_STORM");
+        var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test("Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
         console.log(isiOSWebView);
-        // replace below <INSERT_APP_NAME> with name declared in Android Apps String resources xml
         var isAndroidWebView = /Blood Donor\/[0-9\.]+$/.test(navigator.userAgent);
+        console.log(isAndroidWebView);
         if (isiOSWebView || isAndroidWebView) {
         //identifies in-app webview and prevents journey banner from rendering
         // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
