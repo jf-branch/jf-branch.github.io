@@ -56,7 +56,8 @@
             "addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking"
             .split(" "), 0);
         console.log(navigator.userAgent.toString());
-        var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test("Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
+        // var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test("Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
+        var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
         console.log(isiOSWebView);
         var isAndroidWebView = /Blood Donor\/[0-9\.]+$/.test(navigator.userAgent);
         console.log(isAndroidWebView);
