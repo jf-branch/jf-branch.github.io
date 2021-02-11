@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head type="text/javascript">
+    <title>[Example]</title>
+    <meta name="branch:deeplink:$deeplink_path" content="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <!-- Branch Init-->
+    <script type="text/javascript">
+        var options = {
+
+        };
+        var linkData = {
+            campaign: 'SMS',
+            channel: 'Website',
+            feature: 'Text Me The App',
+            tags: [],
+            alias: '',
+            data: {
+                'custom_bool': true,
+                'custom_int': Date.now(),
+                'gif': 'just-do-it',
+                '$og_title': '[Example]',
+                '$og_description': 'Branch SDK Test App',
+            }
+        };
+        var callback = function (err, result) {
+            console.log(err);
+            if (err) {
+                console.log(err);
+                alert("Sorry, something went wrong.");
+            } else {
+                // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                alert("SMS sent!");
+            }
+        };
+        // (function (b, r, a, n, c, h, _, s, d, k) {
+        //     if (!b[n] || !b[n]._q) {
+        //         for (; s < _.length;) c(h, _[s++]);
+        //         d = r.createElement(a);
+        //         d.async = 1;
+        //         d.src = "https://cdn.branch.io/branch-latest.min.js";
+        //         k = r.getElementsByTagName(a)[0];
+        //         k.parentNode.insertBefore(d, k);
+        //         b[n] = h
+        //     }
+        // })(window, document, "script", "branch", function (b, r) {
+        //         b[r] = function () {
+        //             b._q.push([r, arguments])
+        //         }
+        //     }, {
+        //         _q: [],
+        //         _v: 1
+        //     },
+        //     "addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking"
+        //     .split(" "), 0);
+        // console.log(navigator.userAgent.toString());
+        // // var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test("Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
+        // var isiOSWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
+        // console.log(isiOSWebView);
+        // var isAndroidWebView = /Blood Donor\/[0-9\.]+$/.test(navigator.userAgent);
+        // console.log(isAndroidWebView);
+        // if (isiOSWebView || isAndroidWebView) {
+        // //identifies in-app webview and prevents journey banner from rendering
+        // // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
+        // branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', { 'no_journeys': true });
+        // } else {
+        // //identities it is not an in-app webview and will render journey banner
+        // // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
+        // branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr');
+        // }
+
+        window.mParticle = {
+            config: {
+                isDevelopmentMode: false //switch to false (or remove) for production
+            }
+        };
+
+        (
+            function (t) {
+                window.mParticle = window.mParticle || {};
+                window.mParticle.EventType = {
+                    Unknown: 0,
+                    Navigation: 1,
+                    Location: 2,
+                    Search: 3,
+                    Transaction: 4,
+                    UserContent: 5,
+                    UserPreference: 6,
+                    Social: 7,
+                    Other: 8
+                };
+                window.mParticle.eCommerce = {
+                    Cart: {}
+                };
+                window.mParticle.Identity = {};
+                window.mParticle.config = window.mParticle.config || {};
+                window.mParticle.config.rq = [];
+                window.mParticle.config.snippetVersion = 2.2;
+                window.mParticle.ready = function (t) {
+                    window.mParticle.config.rq.push(t)
+                };
+                var e = ["endSession", "logError", "logBaseEvent", "logEvent", "logForm", "logLink", "logPageView",
+                    "setSessionAttribute", "setAppName", "setAppVersion", "setOptOut", "setPosition",
+                    "startNewSession", "startTrackingLocation", "stopTrackingLocation"
+                ];
+                var o = ["setCurrencyCode", "logCheckout"];
+                var i = ["identify", "login", "logout", "modify"];
+                e.forEach(function (t) {
+                    window.mParticle[t] = n(t)
+                });
+                o.forEach(function (t) {
+                    window.mParticle.eCommerce[t] = n(t, "eCommerce")
+                });
+                i.forEach(function (t) {
+                    window.mParticle.Identity[t] = n(t, "Identity")
+                });
+
+                function n(e, o) {
+                    return function () {
+                        if (o) {
+                            e = o + "." + e
+                        }
+                        var t = Array.prototype.slice.call(arguments);
+                        t.unshift(e);
+                        window.mParticle.config.rq.push(t)
+                    }
+                }
+                var mp = document.createElement("script");
+                mp.type = "text/javascript";
+                mp.async = true;
+                mp.src = ("https:" == document.location.protocol ? "https://jssdkcdns" : "http://jssdkcdn") +
+                    ".mparticle.com/js/v2/" + t + "/mparticle.js";
+                var c = document.getElementsByTagName("script")[0];
+                c.parentNode.insertBefore(mp, c)
+            }
+        )("ad0494840f664c488a4c924d97ae5fdf");
+
+        var linkOptions = {};
+
+        function sendSMS(form) {
+            console.log(form);
+            var phone = form.phone.value;
+            console.log(phone);
+            console.log(linkData);
+            branch.sendSMS(phone, linkData, linkOptions, callback);
+            form.phone.value = "";
+        }
+
+        function createDeepLink() {
+            branch.link(linkData, function (err, link) {
+                console.log(link);
+                if (err) {
+                    alert("Sorry, something went wrong.");
+                } else {
+                    var x = document.getElementById("link");
+                    x.value = link;
+                    // window.location.href = 'https://justinfurstossbranch.github.io/third.html'
+                    alert("Deep Link Created! " + link);
+                }
+            });
+        }
+
+        function displayBanner() {
+            console.log("Display Banner");
+            // branch.setBranchViewData(linkData);
+            branch.setBranchViewData(linkData, function (data, err) {
+                console.log(err);
+            });
+        }
+
+        function closeBanner() {
+            console.log("Close Banner");
+            branch.closeJourney(function (err, data) {
+                console.log(err, data);
+            });
+        }
+
+        function trackEvent() {
+            console.log("Track Event");
+            branch.logEvent(
+                "custom_event", {
+                    metadata: '123'
+                },
+                function (err) {
+                    console.log(err);
+                    if (!err) {
+                        alert("Event Tracked!")
+                    }
+                }
+            );
+        }
+
+        function triggerInAppEvent() {
+            window.parent.postMessage({
+                type: 'hellosign:verifyDomainRequest',
+                payload: {
+                    token: "some shit token",
+                },
+            }, "https://randomurl.com");
+        }
+
+        function setIdentity() {
+            console.log("Sent Identity");
+            branch.setIdentity("Justin Branch");
+        }
+
+        function quickLink() {
+            const canonicalURL = window.location;
+            const quickLink = "https://psmaster.app.link?$canonical_url=" + canonicalURL
+            window.location.href = quickLink
+        }
+    </script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        body {
+            font-family: "Helvetica Neue";
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-card">
+            <!-- <div class="branch-journeys-top"></div> -->
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="index.html" class="w3-bar-item w3-button w3-padding-large">[EXAMPLE]</a>
+            <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="Sections">
+                    SECTIONS<i class="fa fa-caret-down"></i>
+                </button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="first.html" class="w3-bar-item w3-button">FIRST</a>
+                    <a href="second.html" class="w3-bar-item w3-button">SECOND</a>
+                    <a href="third.html" class="w3-bar-item w3-button">THIRD</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div id="navigation" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top"
+        style="margin-top:46px">
+        <!-- <div class="branch-journeys-top"></div> -->
+        <a href="index.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOME</a>
+        <a href="first.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">FIRST</a>
+        <a href="second.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">SECOND</a>
+        <a href="third.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">THIRD</a>
+    </div>
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about">
+    </div>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px">
+        <!-- LOGO -->
+        <div class=" w3-display-container w3-center">
+            <h1>HOME</h1>
+            <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
+            <!-- Phone Number Form -->
+            <form onsubmit="sendSMS(this) ; return false;">
+                <div class="w3-content" style="max-width:2000px;margin-top:46px">
+                    <input placeholder="Phone Number"
+                        style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
+                        id="phone" name="phone" type="tel">
+                </div>
+                <div class="w3-button">
+                    <button id="submitPhoneNumber" type="submit" class="w3-wide"
+                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TEXT
+                        THE
+                        APP</button>
+                </div>
+            </form>
+            <form onsubmit="createDeepLink() ; return false;">
+                <input placeholder="Branch Link"
+                    style="background-color:white; border-radius: 8px; border-width: 1px; padding: 14px 40px; color:grey; border-style: solid;"
+                    id="link" name="link" type="tel">
+                <div class="w3-button">
+                    <button id="createBranchLink" type="create" class="w3-wide"
+                        style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">CREATE
+                        A
+                        BRANCH LINK</button>
+                </div>
+            </form>
+            <div class="w3-button">
+                <button id="displayJourney" type="display" class="w3-wide" onclick="displayBanner()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">DISPLAY
+                    JOURNEY</button>
+            </div>
+            <div class="w3-button">
+                <button id="closeJourney" type="close" class="w3-wide" onclick="closeBanner()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">CLOSE
+                    JOURNEY</button>
+            </div>
+            <div class="w3-button">
+                <button id="logEvent" type="logEvent" class="w3-wide" onclick="trackEvent()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">LOG
+                    EVENT</button>
+            </div>
+            <div class="w3-button">
+                <button id="inAppEvent" type="inAppEvent" class="w3-wide" onclick="triggerInAppEvent()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER
+                    IN-APP EVENT</button>
+            </div>
+            <div class="w3-button">
+                <button id="setIdentity" type="setIdentity" class="w3-wide" onclick="setIdentity()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set
+                    Identity</button>
+            </div>
+            <div class="w3-button">
+                <button id="quickLink" type="quickLink" class="w3-wide" onclick="quickLink()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Quick
+                    Link</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <p style="margin-bottom:40px;margin-top:40px">
+        "
+        If you're having trouble with the button above, copy and paste this URL below into your web browser:
+        "
+        <a href="stytchapp://http://stytch.com/login_magic_link?token=Y7bYpfJTgjJxrguEzVcr36KOYaW_HiiXCqmBtMkhv6k%3D"
+            target="_blank"
+            data-saferedirecturl="https://www.google.com/url?q=http://stytch.com/login_magic_link?token%3DY7bYpfJTgjJxrguEzVcr36KOYaW_HiiXCqmBtMkhv6k%253D&amp;source=gmail&amp;ust=1611349836504000&amp;usg=AFQjCNFv1dz9BJR3YXdSEb1UvpEfP48fQw">stytch.com/login_<wbr>magic_link?token=<wbr>Y7bYpfJTgjJxrguEzVcr36KOYaW_<wbr>HiiXCqmBtMkhv6k%3D</a>
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navigation");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        var modal = document.getElementById("ticketModal");
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
