@@ -143,6 +143,9 @@
             const quickLink = "https://psmaster.app.link?$canonical_url=" + canonicalURL
             window.location.href = quickLink
         }
+        function spotifyLink() {
+            window.location.href = "https://spotify.link/SJoviZBdQeb"
+        }
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
@@ -246,6 +249,13 @@
             <div class="w3-button">
                 <button id="quickLink" type="quickLink" class="w3-wide" onclick="quickLink()"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Quick Link</button>
+            </div>
+            <div class="w3-button">
+                <button id="quickLink" type="quickLink" class="w3-wide" onclick="spotifyLink()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Spotify Link</button>
+            </div>
+            <div class="w3-button">
+                <a href="https://spotify.link/SJoviZBdQeb">Spotify Anchor Tag</a>
             </div>
         </div>
     </div>
