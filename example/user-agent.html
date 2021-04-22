@@ -74,6 +74,8 @@
         function getUserAgent() {
             var userAgent = navigator.userAgent.toString();
             document.getElementById("title").innerHTML = userAgent;
+            document.getElementById("isiOSWebView").innerHTML = isiOSWebView;
+            document.getElementById("isAndroidWebView").innerHTML = isAndroidWebView;
         }
 
         var linkOptions = {};
@@ -191,6 +193,10 @@
         <!-- LOGO -->
         <div class=" w3-display-container w3-center">
             <h1 id="title"></h1>
+            <h1>isiOSWebView</h1>
+            <h1 id="isiOSWebView"></h1>
+            <h1>isAndroidWebView</h1>
+            <h1 id="isAndroidWebView"></h1>
             <div class="w3-display-bottommiddle w3-container w3-padding-32 w3-hide-small"></div>
             <!-- Phone Number Form -->
             <form onsubmit="sendSMS(this) ; return false;">
