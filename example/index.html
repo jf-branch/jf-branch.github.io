@@ -142,6 +142,9 @@
             const quickLink = "https://psmaster.app.link?$canonical_url=" + canonicalURL
             window.location.href = quickLink
         }
+
+        var listener = function(event, data) { console.log(event, data); }
+        branch.addListener('didShowJourney', listener);
     </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />

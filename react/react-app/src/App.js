@@ -9,8 +9,6 @@ import branch from 'branch-sdk';
     var isAndroidWebView = /; wv\)/.test(navigator.userAgent);
     //Declare Boolean result
     var isWebView = isiOSWebView || isAndroidWebView;
-    console.log(isWebView);
-
 branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', {no_journeys: isWebView});
 function getUserAgent() {
   var userAgent = navigator.userAgent.toString();
