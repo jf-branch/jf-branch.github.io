@@ -1,0 +1,46 @@
+{
+  "data": {
+    "banner_id": "836570234480120834",
+    "journey_link_data": {
+      "event": "pageview",
+      "identity_id": "844658680297178910",
+      "feature": "journeys",
+      "is_iframe": false,
+      "sdk": "web2.58.2",
+      "callback_string": "branch_view_callback__1",
+      "branch_key": "key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr",
+      "data": {
+        "$deeplink_path": "index.html",
+        "$canonical_url": "https://justinfurstossbranch.github.io/example/",
+        "$og_title": null,
+        "$og_description": null,
+        "$og_image_url": null,
+        "$og_video": null,
+        "$og_type": null
+      },
+      "session_id": "928708745655402126",
+      "metadata": {
+        "url": "https://justinfurstossbranch.github.io/example/",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+        "language": "en-US",
+        "screen_width": 375,
+        "screen_height": 812,
+        "window_device_pixel_ratio": 3,
+        "hosted_deeplink_data": { "$deeplink_path": "index.html" },
+        "title": "[Example]"
+      },
+      "journey_dismissals": "{&quot;5e597e585a6e20000f13f5ad&quot;:{&quot;view_id&quot;:&quot;762042700697853959&quot;,&quot;dismiss_time&quot;:1595509840733},&quot;5e5e76e330337a60a446c4e2&quot;:{&quot;view_id&quot;:&quot;763409269525040137&quot;,&quot;dismiss_time&quot;:1595509848948},&quot;5f689f81b17e7e000ff3f3b5&quot;:{&quot;view_id&quot;:&quot;836570234480120834&quot;,&quot;dismiss_time&quot;:1607466532752}}",
+      "user_language": "en",
+      "initial_referrer": "",
+      "tags": ["Top Banner"],
+      "openApp": false,
+      "view_id": "836570234480120834",
+      "view_name": "Top Banner",
+      "journey_name": "Test Top Nav Bar",
+      "campaign": "Test Top Nav Bar",
+      "journey_id": "5f689f81b17e7e000ff3f3b5",
+      "channel": "Test",
+      "safeAreaRequired": false
+    }
+  }
+}
