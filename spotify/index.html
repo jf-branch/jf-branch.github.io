@@ -115,8 +115,9 @@
         function trackEvent() {
             console.log("Track Event");
             branch.logEvent(
-                "custom_event", {
-                    metadata: '123'
+                "SUBSCRIBE", {
+                    metadata: '123',
+                    developer_identity: 'Spotify Test'
                 },
                 function (err) {
                     console.log(err);
