@@ -151,6 +151,7 @@ var listener = function(event, data) {
     console.log({"data": JSON.stringify(data)});
 }
 branch.addListener('didShowJourney', listener);
+branch.addListener('willShowJourney', listener);
 
 </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
