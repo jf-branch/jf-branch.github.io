@@ -137,6 +137,10 @@
             console.log("Sent Identity");
             branch.setIdentity("Justin Branch");
         }
+        function logout() {
+            console.log("Logout");
+            branch.logout();
+        }
         function quickLink() {
             const canonicalURL = window.location;
             const quickLink = "https://psmaster.app.link?$canonical_url=" + canonicalURL
@@ -251,6 +255,10 @@ branch.addListener('didShowJourney', listener);
             <div class="w3-button">
                 <button id="setIdentity" type="setIdentity" class="w3-wide" onclick="setIdentity()"
                     style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set Identity</button>
+            </div>
+            <div class="w3-button">
+                <button id="logout" type="logout" class="w3-wide" onclick="logout()"
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Logout</button>
             </div>
             <div class="w3-button">
                 <button id="quickLink" type="quickLink" class="w3-wide" onclick="quickLink()"
