@@ -62,15 +62,21 @@
         var isAndroidWebView = /Blood Donor\/[0-9\.]+$/.test(navigator.userAgent);
         console.log(isAndroidWebView);
         if (isiOSWebView || isAndroidWebView) {
-        //identifies in-app webview and prevents journey banner from rendering
-        // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
-        branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', { 'no_journeys': true });
+            //identifies in-app webview and prevents journey banner from rendering
+            // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
+            branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', {
+                'no_journeys': true
+            }, function (err, data) {
+                console.log(err, data);
+            });
         } else {
-        //identities it is not an in-app webview and will render journey banner
-        // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
-        branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr');
+            //identities it is not an in-app webview and will render journey banner
+            // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
+            branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', function (err, data) {
+                console.log(err, data);
+            });
         }
-        
+
         var linkOptions = {};
 
         function sendSMS(form) {
@@ -83,10 +89,12 @@
         }
 
         function createDeepLink() {
+            console.log("Attempting to creat Branch Link");
             branch.link(linkData, function (err, link) {
                 console.log(link);
                 if (err) {
                     alert("Sorry, something went wrong.");
+                    console.log(err);
                 } else {
                     var x = document.getElementById("link");
                     x.value = link;
@@ -125,38 +133,45 @@
                 }
             );
         }
-            function triggerInAppEvent() {
-                window.parent.postMessage({
-                    type: 'hellosign:verifyDomainRequest',
-                    payload: {
-                        token: "some shit token",
-                    },
-                }, "https://randomurl.com");
-            }
+
+        function triggerInAppEvent() {
+            window.parent.postMessage({
+                type: 'hellosign:verifyDomainRequest',
+                payload: {
+                    token: "some shit token",
+                },
+            }, "https://randomurl.com");
+        }
+
         function setIdentity() {
             console.log("Sent Identity");
             branch.setIdentity("Justin Branch");
         }
+
         function logout() {
             console.log("Logout");
             branch.logout();
         }
+
         function quickLink() {
             const canonicalURL = window.location;
             const quickLink = "https://psmaster.app.link?$canonical_url=" + canonicalURL
             window.location.href = quickLink
         }
 
-        var listener = function(event, data) { console.log(event, data); }
+        var listener = function (event, data) {
+            console.log(event, data);
+        }
         branch.addListener('didShowJourney', listener);
     </script>
-<script>
-var listener = function(event, data) { 
-    console.log({"data": JSON.stringify(data)});
-}
-branch.addListener('didShowJourney', listener);
-
-</script>
+    <script>
+        var listener = function (event, data) {
+            console.log({
+                "data": JSON.stringify(data)
+            });
+        }
+        branch.addListener('didShowJourney', listener);
+    </script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -250,11 +265,13 @@ branch.addListener('didShowJourney', listener);
             </div>
             <div class="w3-button">
                 <button id="inAppEvent" type="inAppEvent" class="w3-wide" onclick="triggerInAppEvent()"
-                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER IN-APP EVENT</button>
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">TRIGGER
+                    IN-APP EVENT</button>
             </div>
             <div class="w3-button">
                 <button id="setIdentity" type="setIdentity" class="w3-wide" onclick="setIdentity()"
-                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set Identity</button>
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Set
+                    Identity</button>
             </div>
             <div class="w3-button">
                 <button id="logout" type="logout" class="w3-wide" onclick="logout()"
@@ -262,7 +279,8 @@ branch.addListener('didShowJourney', listener);
             </div>
             <div class="w3-button">
                 <button id="quickLink" type="quickLink" class="w3-wide" onclick="quickLink()"
-                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Quick Link</button>
+                    style="background-color:#4da4dc; border-radius: 8px; padding: 14px 40px; color:white;">Quick
+                    Link</button>
             </div>
         </div>
     </div>

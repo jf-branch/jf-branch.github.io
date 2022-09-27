@@ -1,0 +1,332 @@
+<html lang="us">
+
+<head>
+    <meta name="deepview-service" content="deepview-service">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.branch.io/deepviews/prod/css/styles.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdn.branch.io/deepviews/prod/translations/v1.3/translations.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.branch.io/deepviews/prod/app/app.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,300" rel="stylesheet" type="text/css">
+    <style>
+        .logo {
+            background: transparent;
+            box-shadow: 2px 3px 12px rgba(127, 127,
+                    142, 0.16);
+            border-radius: 12px;
+            width: 82px;
+            height: 82px;
+            content: " ";
+            float: left;
+            display: inline-block;
+            background-size: 85% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom:
+                10px;
+            background-image: url(https://cdn.branch.io/branch-assets/1642173269510-og_image.png);
+        }
+    </style>
+    <title> Shop Disney </title>
+    <script async="" src="https://cdn.branch.io/deepviews/prod/app/v1/app.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="headline">
+                <div class="logo f_center"></div>
+                <div>
+                    <div class="text-title">
+                        Shop Disney
+                    </div>
+                    <div class="text-app" id="get-the-app">
+                        Get the App!
+                    </div>
+                </div>
+            </div>
+            <div class="b-box">
+                <div class="b-box-top text-description">
+                    <div>
+                        <img width="24" height="24" src="https://cdn.branch.io/deepviews/icons/deepview-ios15-link.svg"
+                            alt="">
+                    </div>
+                    <div id="box-test-first-part">
+                        Clicking below will copy this page
+                    </div>
+                </div>
+                <div class="f_center arrow-container large">
+                    <img width="24" height="24" class="position-absolute"
+                        src="https://cdn.branch.io/deepviews/icons/deepview-ios15-link.svg" alt="">
+                    <img width="24" height="24" class="position-absolute"
+                        src="https://cdn.branch.io/deepviews/icons/deepview-ios15-a.svg" alt="">
+                    <img width="16" height="60" class="position-absolute"
+                        src="https://cdn.branch.io/deepviews/icons/deepview-ios15-arrow.svg" alt="">
+                </div>
+                <div class="b-box-bottom text-description">
+                    <div>
+                        <img width="24" height="24" src="https://cdn.branch.io/deepviews/icons/deepview-ios15-a.svg"
+                            alt="">
+                    </div>
+                    <div id="box-test-second-part">
+                        You'll be redirected to this page in the app
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="text-branch" id="powered-by">
+                Powered by Branch
+            </div>
+            <a href="https://shopdisney-alternate.app.link/LSFSgDfo8pb?__branch_flow_type=viewapp&amp;__branch_flow_id=1063480948970691759&amp;__branch_mobile_deepview_type=1&amp;nl_opt_in=1"
+                id="btn-app" class="cta-button" onclick="copyToClipboard()">
+                <img width="24" height="24" src="https://cdn.branch.io/deepviews/icons/deepview-ios15-app-copy.svg"
+                    alt="">
+                <span id="btn-app-text">Get the App</span>
+            </a>
+            <div id="btn-copied" class="btn-secondary">
+                <img width="20" height="20" src="https://cdn.branch.io/deepviews/icons/deepview-ios15-check.svg" alt="">
+                <span id="btn-copied-text">
+                    Content Copied
+                </span>
+            </div>
+            <a href="https://shopdisney-alternate.app.link/LSFSgDfo8pb?__branch_flow_type=viewapp&amp;__branch_flow_id=1063480948970691759&amp;__branch_mobile_deepview_type=1&amp;nl_opt_out=1"
+                class="text-app-copy box" id="get-the-app-alt">Get
+                the App without Copying</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            try {
+                ignite();
+            } catch (e) {
+                console.error("localization offline");
+            }
+            document.getElementsByClassName("cta-button")[0].onclick = function () {
+                // hide main CTA and display "page copied"
+                document.getElementById('btn-app').style.display = 'none';
+                document.getElementById('btn-copied').style.display = 'flex';
+                event.preventDefault() // pause redirect
+
+                var copyInput = document.createElement("ta");
+                copyInput.style.position = "fixed";
+                copyInput.style.opacity = "0";
+                copyInput.textContent = document.getElementsByClassName("cta-button")[0];
+                copyInput.textContent = copyInput.textContent + '&_cpts=' + Date.now();
+
+                navigator.clipboard.writeText(copyInput.textContent)
+                    .then(() => {})
+                    .catch(err => {});
+
+                setTimeout(function () {
+                    window.location =
+                        "https://shopdisney-alternate.app.link/LSFSgDfo8pb?__branch_flow_type=viewapp&__branch_flow_id=1063480948970691759&__branch_mobile_deepview_type=1&nl_opt_in=1"
+                }, 500);
+            }
+        };
+    </script>
+    <script type="text/javascript">
+        var translations = {
+            "en-us": {
+                "box-test-first-part": "Clicking below will copy this page",
+                "box-test-second-part": "You'll be redirected to this page in the app",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Get the App",
+                "get-the-app": "Get the App!",
+                "get-the-app-alt": "Get the App without Copying",
+                "btn-copied": "Content Copied"
+            },
+            "de-de": {
+                "box-test-first-part": "Wenn Sie unten klicken, wird diese Seite kopiert",
+                "box-test-second-part": "Sie werden zu dieser Seite in der App weitergeleitet",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "App installieren!",
+                "get-the-app": "App installieren!",
+                "get-the-app-alt": "App installieren ohne zu kopieren",
+                "btn-copied-text": "Seite kopiert"
+            },
+            "ja-ja": {
+                "box-test-first-part": "「入手」をクリックすると直前のページをコピーして",
+                "box-test-second-part": "Appで同じ内容がすぐ見られます。",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "入手",
+                "get-the-app": "入手",
+                "get-the-app-alt": "コピー無しで入手",
+                "btn-copied-text": "コピーされたコンテンツ"
+            },
+            "ko-ko": {
+                "box-test-first-part": "아래 버튼을 클릭하면 방금 본 페이지를 복사한 뒤",
+                "box-test-second-part": "해당 페이지를 그대로 앱에서 볼 수 있습니다",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "앱 사용하기",
+                "get-the-app": "앱 사용하기",
+                "get-the-app-alt": "복사하지 않고 앱 사용하기",
+                "btn-copied-text": "콘텐츠 복사"
+            },
+            "es-es": {
+                "box-test-first-part": "Clickando el botón copiará esta página ",
+                "box-test-second-part": "La aplicación se abrirá en esta página",
+                "powered-by": "En colaboración con Branch",
+                "btn-app-text": "En colaboración con Branch",
+                "get-the-app": "Descarga la App",
+                "get-the-app-alt": "Descarga la app sin copiar",
+                "btn-copied": "Contenido copiado"
+            },
+            "fr-fr": {
+                "box-test-first-part": "Cliquer sur le button copiera cette page",
+                "box-test-second-part": "L'application ouvrira cette page",
+                "powered-by": "En partenariat avec Branch",
+                "btn-app-text": "Je télécharge l'application",
+                "get-the-app": "Télécharger l'application",
+                "get-the-app-alt": "Je télécharge l'application sans copier",
+                "btn-copied": "Contenu copié"
+            },
+            "it-it": {
+                "box-test-first-part": "Cliccando qui sotto la pagina verrà copiata",
+                "box-test-second-part": "Sarrài ridiretto su questa pagina nell'app",
+                "powered-by": "In collaborazione con Branch",
+                "btn-app-text": "Scarica l'applicazione",
+                "get-the-app": "Scarica l'applicazione",
+                "get-the-app-alt": "Scarica l'applicazione senza copiare",
+                "btn-copied": "Contenuto copiato"
+            },
+            "ru-ru": {
+                "box-test-first-part": "Нажав ниже, вы скопируете эту страницу",
+                "box-test-second-part": "Нажав ниже, вы скопируете эту страницу",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Установи приложение",
+                "get-the-app": "Установи приложение!",
+                "get-the-app-alt": "Установи приложение, не копируя",
+                "btn-copied": "Контент скопирован"
+            },
+            "ar-om": {
+                "box-test-first-part": "أنقر الرابط الأسفل لتنسيخ الصفحة",
+                "box-test-second-part": "ستعود إلى هذه الصفحة في التطبيق",
+                "powered-by": "تابعة لبرانش",
+                "btn-app-text": "نزل التطبيق",
+                "get-the-app": "نزل التطبيق",
+                "get-the-app-alt": "نزل التطبيق دون نسخ",
+                "btn-copied": "نسخ المحتوى"
+            },
+            "sw-sw": {
+                "box-test-first-part": "När du klickar nedan kopieras denna sidan",
+                "box-test-second-part": "Du navigeras till denna sidan i appen",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Hämta appen",
+                "get-the-app": "Hämta appen!",
+                "get-the-app-alt": "Hämta appen utan att kopiera",
+                "btn-copied": "Innehållet har kopierats"
+            },
+            "hi-in": {
+                "box-test-first-part": "नीचे क्लिक करने से इस पेज की प्रतिलिपि बन जाएगी।",
+                "box-test-second-part": "आपको ऐप में इस पेज पर पुनः प्रेषित किया जाएगा।",
+                "powered-by": "Branch द्वारा संचालित",
+                "btn-app-text": "ऐप प्राप्त करें",
+                "get-the-app": "ऐप प्राप्त करें!",
+                "get-the-app-alt": "बिना प्रतिलिपि बनाये ऐप प्राप्त करें",
+                "btn-copied": "सामग्री की प्रतिलिपि बनाई गई"
+            },
+            "zh-cn": {
+                "box-test-first-part": "点击下方按钮将拷贝此页面",
+                "box-test-second-part": "您将会被带到到软件中的这个页面",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "获取软件",
+                "get-the-app": "获取软件!",
+                "get-the-app-alt": "无需复制即可下载软件",
+                "btn-copied": "内容已复制"
+            },
+            "zh-tw": {
+                "box-test-first-part": "點擊下方按鈕將拷貝此頁面",
+                "box-test-second-part": "您將會被帶到到軟件中的這個頁面",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "獲取軟件",
+                "get-the-app": "獲取軟件!",
+                "get-the-app-alt": "無需複制即可下載軟件",
+                "btn-copied": "內容已復制"
+            },
+            "tr-tr": {
+                "box-test-first-part": "Aşağıya tıkladığınızda bu sayfa kopyalanacak",
+                "box-test-second-part": "Uygulama üzerinde bu sayfaya yönlendirileceksiniz",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Uygulamayı İndir",
+                "get-the-app": "Uygulamayı İndir!",
+                "get-the-app-alt": "Kopyalamadan Uygulamayı İndir",
+                "btn-copied": "İçerik Kopyalandı"
+            },
+            "pt-pt": {
+                "box-test-first-part": "Clique abaixo para copiar esta página",
+                "box-test-second-part": "Você será redirecionado para está página no aplicativo",
+                "powered-by": "Di buat oleh Branch",
+                "btn-app-text": "Baixe o app",
+                "get-the-app": "Baixe o app!",
+                "get-the-app-alt": "Baixe o app sem copiar",
+                "btn-copied": "Conteúdo copiado"
+            },
+            "ms-id": {
+                "box-test-first-part": "Click tombol di bawah ini untuk copy halaman ini",
+                "box-test-second-part": "Kamu akan di arahkan ke halaman ini di dalam aplikasi",
+                "powered-by": "Di buat oleh Branch",
+                "btn-app-text": "Dapatkan aplikasinya",
+                "get-the-app": "Install Aplikasi nya!",
+                "get-the-app-alt": "Dapatkan aplikasinya tanpa harus copy",
+                "btn-copied": "Konten telah di copy"
+            },
+            "ms-my": {
+                "box-test-first-part": "Klik di bawah untuk salin halaman ini",
+                "box-test-second-part": "Anda akan diarahkan ke halaman ini dalam aplikasi",
+                "powered-by": "Dikuasai oleh Branch",
+                "btn-app-text": "Dapatkan Aplikasi",
+                "get-the-app": "Dapatkan Aplikasi!",
+                "get-the-app-alt": "Dapatkan Aplikasi tanpa salinan",
+                "btn-copied": "Kandungan disalin"
+            },
+            "th-th": {
+                "box-test-first-part": "การคลิกด้านล่างจะเป็นการคัดลอกหน้านี้",
+                "box-test-second-part": "คุณจะถูกเปลี่ยนไปยังหน้านี้ในแอพ",
+                "powered-by": "ได้รับการสนับสนุนโดย",
+                "btn-app-text": "ติดตั้งแอพ",
+                "get-the-app": "ติดตั้งแอพ",
+                "get-the-app-alt": "ติดตั้งแอพโดยไม่ต้องคัดลอก",
+                "btn-copied": "เนื้อหาที่คัดลอก"
+            },
+            "da-dk": {
+                "box-test-first-part": "Hvis du klikker nedenunder kopierer vi siden",
+                "box-test-second-part": "Du bliver videresendt til samme side i appen",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Hent appen",
+                "get-the-app": "Hent appen!",
+                "get-the-app-alt": "Hent appen uden at kopiere linket",
+                "btn-copied": "Linket er kopieret"
+            },
+            "nb-no": {
+                "box-test-first-part": "Hvis du klikker nedenfor kopierer vi siden",
+                "box-test-second-part": "Du blir omdirigert til samme siden i appen",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Last ned appen her",
+                "get-the-app": "Last ned appen her!",
+                "get-the-app-alt": "Last ned appen uten med å kopiere lenken",
+                "btn-copied": "Linken ble kopieret"
+            },
+            "he-il": {
+                "box-test-first-part": "להעתקת העמוד יש ללחוץ על הלינק למטה",
+                "box-test-second-part": "האפליקציה תפתח בעמוד הרלוונטי",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "המשך להורדה",
+                "get-the-app": "להורדה!",
+                "get-the-app-alt": "להורדת האפליקציה בלי העתקה",
+                "btn-copied": "הקישור הועתק"
+            },
+            "sk-sk": {
+                "box-test-first-part": "Kliknutím dole bude stránka skopírovaná",
+                "box-test-second-part": "Na túto stránku budete presmerovaní v aplikácií",
+                "powered-by": "Powered by Branch",
+                "btn-app-text": "Stiahnuť aplikáciu",
+                "get-the-app": "Stiahni si appku!",
+                "get-the-app-alt": "Stiahnuť aplikáciu bez kopírovania",
+                "btn-copied": "Obsah skopírovaný"
+            }
+        }
+    </script>
+</body>
+
+</html>
