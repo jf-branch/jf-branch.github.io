@@ -3321,8 +3321,8 @@
     };
     branch_view._getPageviewRequestData = function (a, b, c, d) {
         journeys_utils.branch = c;
-        b || = {};
-        a || = {};
+        b || (b = {});
+        a || (a = {});
         journeys_utils.entryAnimationDisabled = b.disable_entry_animation || !1;
         journeys_utils.exitAnimationDisabled = b.disable_exit_animation || !1;
         var e = utils.merge({}, c._branchViewData),
