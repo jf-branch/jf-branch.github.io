@@ -3412,7 +3412,7 @@
         },
         Branch = function () {
             if (!(this instanceof Branch)) {
-                return default_branch || = new Branch(), default_branch;
+                return default_branch || (default_branch = new Branch()), default_branch;
             }
             this._queue = task_queue();
             this._storage = new BranchStorage(["session", "cookie", "pojo"]);
@@ -3790,7 +3790,7 @@
     });
     Branch.prototype.deepview = wrap(callback_params.CALLBACK_ERR, function (a, b, c) {
         var d = this;
-        c || = {};
+        c || (c = {});
         c.deepview_type = "undefined" === typeof c.deepview_type ? "deepview" : "banner";
         b.data = utils.merge(utils.getHostedDeepLinkData(), b.data);
         b = utils.isIframe() ? utils.merge({
