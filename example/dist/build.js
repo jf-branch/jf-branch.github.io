@@ -1191,7 +1191,7 @@ utils.retries = 2;
 utils.retry_delay = 200;
 utils.timeout = 5000;
 utils.nonce = "";
-utils.defaultReferralLinkExpiry = 90;
+utils.defaultReferralLinkExpiry = 240;
 utils.instrumentation = {};
 utils.navigationTimingAPIEnabled = "undefined" !== typeof window && !!(window.performance && window.performance.timing && window.performance.timing.navigationStart);
 utils.timeSinceNavigationStart = function() {
@@ -2931,7 +2931,7 @@ Branch.prototype.init = wrap(callback_params.CALLBACK_ERR_DATA, function(a, b, c
   utils.nonce = c && c.nonce ? c.nonce : utils.nonce;
   utils.debug = c && c.enableLogging ? c.enableLogging : utils.debug;
   utils.userPreferences.trackingDisabled = c && c.tracking_disabled && !0 === c.tracking_disabled ? !0 : !1;
-  utils.userPreferences.enableReferringLinkExpiry = c && c.enableReferringLinkExpiry && !0 === c.enableReferringLinkExpiry ? !0 : !1;
+  utils.userPreferences.enableReferringLinkExpiry = c && c.enableReferringLinkExpiry ? c.enableReferringLinkExpiry : utils.userPreferences.enableReferringLinkExpiry;
   utils.userPreferences.allowErrorsInCallback = !1;
   utils.userPreferences.trackingDisabled && utils.cleanApplicationAndSessionStorage(d);
   b = session.get(d._storage, !0);
