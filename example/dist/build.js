@@ -1191,7 +1191,7 @@ utils.retries = 2;
 utils.retry_delay = 200;
 utils.timeout = 5000;
 utils.nonce = "";
-utils.defaultReferralLinkExpiry = 240;
+utils.defaultReferralLinkExpiry = 240000;
 utils.instrumentation = {};
 utils.navigationTimingAPIEnabled = "undefined" !== typeof window && !!(window.performance && window.performance.timing && window.performance.timing.navigationStart);
 utils.timeSinceNavigationStart = function() {
@@ -1202,7 +1202,7 @@ utils.calculateBrtt = function(a) {
   return a && "number" === typeof a ? (Date.now() - a).toString() : null;
 };
 utils.dismissEventToSourceMapping = {didClickJourneyClose:"Button(X)", didClickJourneyContinue:"Dismiss Journey text", didClickJourneyBackgroundDismiss:"Background Dismiss", didScrollJourneyBackgroundDismiss:"Background Dismiss"};
-utils.userPreferences = {trackingDisabled:!1, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, enableReferringLinkExpiry:!0, shouldBlockRequest:function(a, b) {
+utils.userPreferences = {trackingDisabled:!1, enableReferringLinkExpiry:!0, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, shouldBlockRequest:function(a, b) {
   var c = document.createElement("a");
   c.href = a;
   a = [config.api_endpoint, config.app_service_endpoint, config.link_service_endpoint];
