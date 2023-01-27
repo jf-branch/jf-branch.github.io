@@ -2193,9 +2193,7 @@ var session = {get:function(a, b) {
     return null;
   }
 }, set:function(a, b, c) {
-  var d = new Date();
-  b.referringLinkExpiry = d.getTime() + utils.defaultReferralLinkExpiry;
-  c && b.referring_link && utils.userPreferences.enableReferringLinkExpiry && (b.referringLinkExpiry = d.getTime() + utils.defaultReferralLinkExpiry);
+  c && b.referring_link && utils.userPreferences.enableReferringLinkExpiry && (b.referringLinkExpiry = (new Date()).getTime() + utils.defaultReferralLinkExpiry);
   b = utils.encodeBFPs(b);
   a.set("branch_session", goog.json.serialize(b));
   c && a.set("branch_session_first", goog.json.serialize(b), !0);
