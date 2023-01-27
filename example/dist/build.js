@@ -1191,7 +1191,7 @@ utils.retries = 2;
 utils.retry_delay = 200;
 utils.timeout = 5000;
 utils.nonce = "";
-utils.defaultReferralLinkExpiry = 604800;
+utils.defaultReferralLinkExpiry = 90;
 utils.instrumentation = {};
 utils.navigationTimingAPIEnabled = "undefined" !== typeof window && !!(window.performance && window.performance.timing && window.performance.timing.navigationStart);
 utils.timeSinceNavigationStart = function() {
@@ -1202,7 +1202,7 @@ utils.calculateBrtt = function(a) {
   return a && "number" === typeof a ? (Date.now() - a).toString() : null;
 };
 utils.dismissEventToSourceMapping = {didClickJourneyClose:"Button(X)", didClickJourneyContinue:"Dismiss Journey text", didClickJourneyBackgroundDismiss:"Background Dismiss", didScrollJourneyBackgroundDismiss:"Background Dismiss"};
-utils.userPreferences = {trackingDisabled:!1, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, enableReferringLinkExpiry:!1, shouldBlockRequest:function(a, b) {
+utils.userPreferences = {trackingDisabled:!1, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, enableReferringLinkExpiry:!0, shouldBlockRequest:function(a, b) {
   var c = document.createElement("a");
   c.href = a;
   a = [config.api_endpoint, config.app_service_endpoint, config.link_service_endpoint];
@@ -2814,7 +2814,7 @@ branch_view._getPageviewRequestData = function(a, b, c, d) {
   journeys_utils.entryAnimationDisabled = b.disable_entry_animation || !1;
   journeys_utils.exitAnimationDisabled = b.disable_exit_animation || !1;
   var e = utils.merge({}, c._branchViewData), f = session.get(c._storage) || {}, g = f.hasOwnProperty("has_app") ? f.has_app : !1, k = f.hasOwnProperty("identity") ? f.identity : null, h = c._storage.get("journeyDismissals", !0), l = (b.user_language || utils.getBrowserLanguageCode() || "en").toLowerCase() || null, m = utils.getInitialReferrer(c._referringLink()), q = b.branch_view_id || utils.getParameterByName("_branch_view_id") || null;
-  c = b.make_new_link ? null : utils.getClickIdAndSearchStringFromLink(c._referringLink());
+  c = b.make_new_link ? null : utils.getClickIdAndSearchStringFromLink(c._referringLink(!0));
   e.event = d ? "dismiss" : "pageview";
   e.metadata = a;
   e = utils.addPropertyIfNotNull(e, "initial_referrer", m);
@@ -2899,9 +2899,19 @@ Branch.prototype._api = function(a, b, c) {
     c(d, e);
   });
 };
-Branch.prototype._referringLink = function() {
-  var a = session.get(this._storage);
-  return (a = a && a.referring_link) || utils.userPreferences.enableReferringLinkExpiry && (a = (a = session.get(this._storage, !0)) && a.referring_link) ? a : (a = this._storage.get("click_id")) ? config.link_service_endpoint + "/c/" + a : null;
+Branch.prototype._referringLink = function(a) {
+  var b = session.get(this._storage);
+  if (b = b && b.referring_link) {
+    return b;
+  }
+  if (utils.userPreferences.enableReferringLinkExpiry && a && (a = (b = session.get(this._storage, !0)) && b.referring_link) && (b = b && b.referringLinkExpiry)) {
+    if ((new Date()).getTime() > b) {
+      session.patch(this._storage, {referringLinkExpiry:null}, !0, !0);
+    } else {
+      return a;
+    }
+  }
+  return (a = this._storage.get("click_id")) ? config.link_service_endpoint + "/c/" + a : null;
 };
 Branch.prototype._publishEvent = function(a, b) {
   for (var c = 0; c < this._listeners.length; c++) {
