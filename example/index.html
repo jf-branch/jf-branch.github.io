@@ -9,6 +9,8 @@
     <!-- Branch Init-->
     <script type="text/javascript">
         var options = {
+            enableExtendedJourneysAssist: true,
+            extendedJourneysAssistExpiryTime : 180000 // TTL value in milliseconds for the Referring Link. Defaults to 7 days
 
         };
         var linkData = {
@@ -72,7 +74,7 @@
         } else {
             //identities it is not an in-app webview and will render journey banner
             // use test key for non production key_test_biGR9wE8gWR0GfHoZaf24ipbwypfT8dF
-            branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr', function (err, data) {
+            branch.init('key_live_ccQ8piFdCMPVysh8TLmEhghmuCk162Rr',options,function (err, data) {
                 console.log(err, data);
             });
         }
