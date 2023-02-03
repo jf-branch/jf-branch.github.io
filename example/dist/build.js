@@ -1191,7 +1191,7 @@ utils.retries = 2;
 utils.retry_delay = 200;
 utils.timeout = 5000;
 utils.nonce = "";
-utils.defaultReferralLinkExpiry = 240000;
+utils.extendedJourneysAssistExpiryTime = 604800000;
 utils.instrumentation = {};
 utils.navigationTimingAPIEnabled = "undefined" !== typeof window && !!(window.performance && window.performance.timing && window.performance.timing.navigationStart);
 utils.timeSinceNavigationStart = function() {
@@ -1202,7 +1202,7 @@ utils.calculateBrtt = function(a) {
   return a && "number" === typeof a ? (Date.now() - a).toString() : null;
 };
 utils.dismissEventToSourceMapping = {didClickJourneyClose:"Button(X)", didClickJourneyContinue:"Dismiss Journey text", didClickJourneyBackgroundDismiss:"Background Dismiss", didScrollJourneyBackgroundDismiss:"Background Dismiss"};
-utils.userPreferences = {trackingDisabled:!1, enableReferringLinkExpiry:!0, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, shouldBlockRequest:function(a, b) {
+utils.userPreferences = {trackingDisabled:!1, enableExtendedJourneysAssist:!1, whiteListedEndpointsWithData:{"/v1/open":{link_identifier:"\\d+"}, "/v1/pageview":{event:"pageview"}, "/v1/dismiss":{event:"dismiss"}, "/v1/url":{}}, allowErrorsInCallback:!1, shouldBlockRequest:function(a, b) {
   var c = document.createElement("a");
   c.href = a;
   a = [config.api_endpoint, config.app_service_endpoint, config.link_service_endpoint];
@@ -2193,7 +2193,7 @@ var session = {get:function(a, b) {
     return null;
   }
 }, set:function(a, b, c) {
-  c && b.referring_link && utils.userPreferences.enableReferringLinkExpiry && (b.referringLinkExpiry = (new Date()).getTime() + utils.defaultReferralLinkExpiry);
+  c && b.referring_link && utils.userPreferences.enableExtendedJourneysAssist && (b.referringLinkExpiry = (new Date()).getTime() + utils.extendedJourneysAssistExpiryTime);
   b = utils.encodeBFPs(b);
   a.set("branch_session", goog.json.serialize(b));
   c && a.set("branch_session_first", goog.json.serialize(b), !0);
@@ -2514,7 +2514,7 @@ journeys_utils.addIframeInnerCSS = function(a, b) {
   }
 };
 journeys_utils.addDynamicCtaText = function(a, b) {
-  a.contentWindow.document.getElementById("branch-mobile-action").innerHTML = b;
+  (a = a.contentWindow.document) && a.getElementById("branch-mobile-action") && (a = a.getElementById("branch-mobile-action"), a.innerHTML = b, a.setAttribute("aria-label", b));
 };
 journeys_utils.centerOverlay = function(a) {
   a && a.style && (a.style.bottom = "140px", a.style.width = "94%", a.style.borderRadius = "20px", a.style.margin = "auto");
@@ -2902,7 +2902,7 @@ Branch.prototype._referringLink = function(a) {
   if (b = b && b.referring_link) {
     return b;
   }
-  if (utils.userPreferences.enableReferringLinkExpiry && a && (a = (b = session.get(this._storage, !0)) && b.referring_link) && (b = b && b.referringLinkExpiry)) {
+  if (utils.userPreferences.enableExtendedJourneysAssist && a && (a = (b = session.get(this._storage, !0)) && b.referring_link, b = b && b.referringLinkExpiry, a && b)) {
     if ((new Date()).getTime() > b) {
       session.patch(this._storage, {referringLinkExpiry:null}, !0, !0);
     } else {
@@ -2929,7 +2929,8 @@ Branch.prototype.init = wrap(callback_params.CALLBACK_ERR_DATA, function(a, b, c
   utils.nonce = c && c.nonce ? c.nonce : utils.nonce;
   utils.debug = c && c.enableLogging ? c.enableLogging : utils.debug;
   utils.userPreferences.trackingDisabled = c && c.tracking_disabled && !0 === c.tracking_disabled ? !0 : !1;
-  utils.userPreferences.enableReferringLinkExpiry = c && c.enableReferringLinkExpiry ? c.enableReferringLinkExpiry : utils.userPreferences.enableReferringLinkExpiry;
+  utils.userPreferences.enableExtendedJourneysAssist = c && c.enableExtendedJourneysAssist ? c.enableExtendedJourneysAssist : utils.userPreferences.enableExtendedJourneysAssist;
+  utils.extendedJourneysAssistExpiryTime = c && c.extendedJourneysAssistExpiryTime && Number.isInteger(c.extendedJourneysAssistExpiryTime) ? c.extendedJourneysAssistExpiryTime : utils.extendedJourneysAssistExpiryTime;
   utils.userPreferences.allowErrorsInCallback = !1;
   utils.userPreferences.trackingDisabled && utils.cleanApplicationAndSessionStorage(d);
   b = session.get(d._storage, !0);
